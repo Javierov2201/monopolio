@@ -24,7 +24,7 @@ function Game() {
 			p.AI.payDebt();
 
 			if (p.money < 0) {
-				popup("<p>" + p.name + " is bankrupt. All of its assets will be turned over to " + player[p.creditor].name + ".</p>", game.bankruptcy);
+				popup("<p>" + p.name + " está en quiebra. Todos sus activos serán entregados a " + player[p.creditor].name + ".</p>", game.bankruptcy);
 			} else {
 				roll();
 			}
@@ -59,7 +59,7 @@ function Game() {
 		if (highestbid > 0) {
 			p.pay(highestbid, 0);
 			sq.owner = highestbidder;
-			addAlert(p.name + " bought " + sq.name + " for $" + highestbid + ".");
+			addAlert(p.name + " compró " + sq.name + " por $" + highestbid + ".");
 		}
 
 		for (var i = 1; i <= pcount; i++) {
@@ -100,7 +100,7 @@ function Game() {
 			currentbidder -= pcount;
 		}
 
-		popup("<div style='font-weight: bold; font-size: 16px; margin-bottom: 10px;'>Auction <span id='propertyname'></span></div><div>Highest Bid = $<span id='highestbid'></span> (<span id='highestbidder'></span>)</div><div><span id='currentbidder'></span>, it is your turn to bid.</div<div><input id='bid' title='Enter an amount to bid on " + s.name + ".' style='width: 291px;' /></div><div><input type='button' value='Bid' onclick='game.auctionBid();' title='Place your bid.' /><input type='button' value='Pass' title='Skip bidding this time.' onclick='game.auctionPass();' /><input type='button' value='Exit Auction' title='Stop bidding on " + s.name + " altogether.' onclick='if (confirm(\"Are you sure you want to stop bidding on this property altogether?\")) game.auctionExit();' /></div>", "blank");
+		popup("<div style='font-weight: bold; font-size: 16px; margin-bottom: 10px;'>Subasta de <span id='propertyname'></span></div><div>Mayor oferta = $<span id='highestbid'></span> (<span id='highestbidder'></span>)</div><div><span id='currentbidder'></span>, es tu turno de ofertar.</div<div><input id='bid' title='Enter an amount to bid on " + s.name + ".' style='width: 291px;' /></div><div><input type='button' value='Ofertar' onclick='game.auctionBid();' title='Place your bid.' /><input type='button' value='Pasar' title='Skip bidding this time.' onclick='game.auctionPass();' /><input type='button' value='Salir de subasta' title='Stop bidding on " + s.name + " altogether.' onclick='if (confirm(\"¿Estás seguro de que quieres dejar de ofertar por esta propiedad?\")) game.auctionExit();' /></div>", "blank");
 
 		document.getElementById("propertyname").innerHTML = "<a href='javascript:void(0);' onmouseover='showdeed(" + auctionproperty + ");' onmouseout='hidedeed();' class='statscellcolor'>" + s.name + "</a>";
 		document.getElementById("highestbid").innerHTML = "0";
@@ -183,16 +183,16 @@ function Game() {
 					if (bid === -1 || highestbid >= p.money) {
 						p.bidding = false;
 
-						window.alert(p.name + " exited the auction.");
+						window.alert(p.name + " salió de la subasta.");
 						continue;
 
 					} else if (bid === 0) {
-						window.alert(p.name + " passed.");
+						window.alert(p.name + " ha pasado.");
 						continue;
 
 					} else if (bid > 0) {
 						this.auctionBid(bid);
-						window.alert(p.name + " bid $" + bid + ".");
+						window.alert(p.name + " oferta $" + bid + ".");
 						continue;
 					}
 					return;
@@ -212,15 +212,15 @@ function Game() {
 		bid = bid || parseInt(document.getElementById("bid").value, 10);
 
 		if (bid === "" || bid === null) {
-			document.getElementById("bid").value = "Please enter a bid.";
+			document.getElementById("bid").value = "Por favor ingrese una oferta.";
 			document.getElementById("bid").style.color = "red";
 		} else if (isNaN(bid)) {
-			document.getElementById("bid").value = "Your bid must be a number.";
+			document.getElementById("bid").value = "Su oferta debe ser un número.";
 			document.getElementById("bid").style.color = "red";
 		} else {
 
 			if (bid > player[currentbidder].money) {
-				document.getElementById("bid").value = "You don't have enough money to bid $" + bid + ".";
+				document.getElementById("bid").value = "No tienes suficiente dinero para hacer una oferta $" + bid + ".";
 				document.getElementById("bid").style.color = "red";
 			} else if (bid > highestbid) {
 				highestbid = bid;
@@ -234,7 +234,7 @@ function Game() {
 					this.auctionPass();
 				}
 			} else {
-				document.getElementById("bid").value = "Your bid must be greater than highest bid. ($" + highestbid + ")";
+				document.getElementById("bid").value = "Su oferta debe ser mayor que la oferta más alta. ($" + highestbid + ")";
 				document.getElementById("bid").style.color = "red";
 			}
 		}
@@ -308,7 +308,7 @@ function Game() {
 		var amount = this.value;
 
 		if (isNaN(amount)) {
-			this.value = "This value must be a number.";
+			this.value = "Este valor debe ser un número";
 			this.style.color = "red";
 			return false;
 		}
@@ -317,7 +317,7 @@ function Game() {
 		this.value = amount;
 
 		if (amount < 0) {
-			this.value = "This value must be greater than 0.";
+			this.value = "Este número debe ser mayor que 0";
 			this.style.color = "red";
 			return false;
 		}
@@ -1593,15 +1593,15 @@ function updateOption() {
 	document.getElementById("mortgagebutton").disabled = false;
 
 	if (sq.mortgage) {
-		document.getElementById("mortgagebutton").value = "Unmortgage ($" + Math.round(sq.price * 0.6) + ")";
-		document.getElementById("mortgagebutton").title = "Unmortgage " + sq.name + " for $" + Math.round(sq.price * 0.6) + ".";
+		document.getElementById("mortgagebutton").value = "Deshipotecar ($" + Math.round(sq.price * 0.6) + ")";
+		document.getElementById("mortgagebutton").title = "Deshipotecar " + sq.name + " por $" + Math.round(sq.price * 0.6) + ".";
 		$("#buyhousebutton").hide();
 		$("#sellhousebutton").hide();
 
 		allGroupUnmortgaged = false;
 	} else {
-		document.getElementById("mortgagebutton").value = "Mortgage ($" + (sq.price * 0.5) + ")";
-		document.getElementById("mortgagebutton").title = "Mortgage " + sq.name + " for $" + (sq.price * 0.5) + ".";
+		document.getElementById("mortgagebutton").value = "Hipotecar ($" + (sq.price * 0.5) + ")";
+		document.getElementById("mortgagebutton").title = "Hipotecar " + sq.name + " por $" + (sq.price * 0.5) + ".";
 
 		if (sq.groupNumber >= 3) {
 			$("#buyhousebutton").show();
@@ -1609,14 +1609,14 @@ function updateOption() {
 			buyhousebutton.disabled = false;
 			sellhousebutton.disabled = false;
 
-			buyhousebutton.value = "Buy house ($" + sq.houseprice + ")";
-			sellhousebutton.value = "Sell house ($" + (sq.houseprice * 0.5) + ")";
-			buyhousebutton.title = "Buy a house for $" + sq.houseprice;
-			sellhousebutton.title = "Sell a house for $" + (sq.houseprice * 0.5);
+			buyhousebutton.value = "Comprar casas ($" + sq.houseprice + ")";
+			sellhousebutton.value = "Vender casa ($" + (sq.houseprice * 0.5) + ")";
+			buyhousebutton.title = "Comprar una casa por $" + sq.houseprice;
+			sellhousebutton.title = "Vender una casa por $" + (sq.houseprice * 0.5);
 
 			if (sq.house == 4) {
-				buyhousebutton.value = "Buy hotel ($" + sq.houseprice + ")";
-				buyhousebutton.title = "Buy a hotel for $" + sq.houseprice;
+				buyhousebutton.value = "Comprar hotel ($" + sq.houseprice + ")";
+				buyhousebutton.title = "Comprar hotel por $" + sq.houseprice;
 			}
 			if (sq.hotel == 1) {
 				$("#buyhousebutton").hide();
@@ -1816,8 +1816,8 @@ function gotojail() {
 	p.jail = true;
 	doublecount = 0;
 
-	document.getElementById("nextbutton").value = "End turn";
-	document.getElementById("nextbutton").title = "End turn and advance to the next player.";
+	document.getElementById("nextbutton").value = "Finalizar turno";
+	document.getElementById("nextbutton").title = "Finalizar turno y pasar al siguiente jugador";
 
 	if (p.human) {
 		document.getElementById("nextbutton").focus();
@@ -2231,7 +2231,7 @@ function buy() {
 
 		property.owner = turn;
 		updateMoney();
-		addAlert(p.name + " bought " + property.name + " for " + property.pricetext + ".");
+		addAlert(p.name + " compró " + property.name + " por " + property.pricetext + ".");
 
 		updateOwned();
 
@@ -2297,9 +2297,9 @@ function land(increasedRent) {
 	var die2 = game.getDie(2);
 
 	$("#landed").show();
-	document.getElementById("landed").innerHTML = "You landed on " + s.name + ".";
+	document.getElementById("landed").innerHTML = "Caíste en " + s.name + ".";
 	s.landcount++;
-	addAlert(p.name + " landed on " + s.name + ".");
+	addAlert(p.name + " cayó en " + s.name + ".");
 
 	// Allow player to buy the property on which he landed.
 	if (s.price !== 0 && s.owner === 0) {
@@ -2310,7 +2310,7 @@ function land(increasedRent) {
 				buy();
 			}
 		} else {
-			document.getElementById("landed").innerHTML = "<div>You landed on <a href='javascript:void(0);' onmouseover='showdeed(" + p.position + ");' onmouseout='hidedeed();' class='statscellcolor'>" + s.name + "</a>.<input type='button' onclick='buy();' value='Buy ($" + s.price + ")' title='Buy " + s.name + " for " + s.pricetext + ".'/></div>";
+			document.getElementById("landed").innerHTML = "<div>Caíste en <a href='javascript:void(0);' onmouseover='showdeed(" + p.position + ");' onmouseout='hidedeed();' class='statscellcolor'>" + s.name + "</a>.<input type='button' onclick='buy();' value='Comprar ($" + s.price + ")' title='Buy " + s.name + " for " + s.pricetext + ".'/></div>";
 		}
 
 
@@ -2432,8 +2432,8 @@ function roll() {
 	if (p.human) {
 		document.getElementById("nextbutton").focus();
 	}
-	document.getElementById("nextbutton").value = "End turn";
-	document.getElementById("nextbutton").title = "End turn and advance to the next player.";
+	document.getElementById("nextbutton").value = "Finalizar turno";
+	document.getElementById("nextbutton").title = "Finalizar turno y pasar al siguiente jugador";
 
 	game.rollDice();
 	var die1 = game.getDie(1);
@@ -2442,17 +2442,17 @@ function roll() {
 	doublecount++;
 
 	if (die1 == die2) {
-		addAlert(p.name + " rolled " + (die1 + die2) + " - doubles.");
+		addAlert(p.name + " lanzó " + (die1 + die2) + " - dobles.");
 	} else {
-		addAlert(p.name + " rolled " + (die1 + die2) + ".");
+		addAlert(p.name + " lanzó " + (die1 + die2) + ".");
 	}
 
 	if (die1 == die2 && !p.jail) {
 		updateDice(die1, die2);
 
 		if (doublecount < 3) {
-			document.getElementById("nextbutton").value = "Roll again";
-			document.getElementById("nextbutton").title = "You threw doubles. Roll again.";
+			document.getElementById("nextbutton").value = "Lanzar nuevamente";
+			document.getElementById("nextbutton").title = "Lanzaste dobles. Lanza otra vez.";
 
 		// If player rolls doubles three times in a row, send him to jail
 		} else if (doublecount === 3) {
@@ -2471,8 +2471,8 @@ function roll() {
 			return;
 		}
 	} else {
-		document.getElementById("nextbutton").value = "End turn";
-		document.getElementById("nextbutton").title = "End turn and advance to the next player.";
+		document.getElementById("nextbutton").value = "Finalizar turno";
+		document.getElementById("nextbutton").title = "Finalizar turno y pasar al siguiente jugador.";
 		doublecount = 0;
 	}
 
@@ -2556,7 +2556,7 @@ function play() {
 
 	document.getElementById("pname").innerHTML = p.name;
 
-	addAlert("It is " + p.name + "'s turn.");
+	addAlert("Es el turno de " + p.name + ".");
 
 	// Check for bankruptcy.
 	p.pay(0, p.creditor);
@@ -2568,8 +2568,8 @@ function play() {
 	if (p.human) {
 		document.getElementById("nextbutton").focus();
 	}
-	document.getElementById("nextbutton").value = "Roll Dice";
-	document.getElementById("nextbutton").title = "Roll the dice and move your token accordingly.";
+	document.getElementById("nextbutton").value = "Lanzar dados.";
+	document.getElementById("nextbutton").title = "Lanzar dados y mover tu ficha.";
 
 	$("#die0").hide();
 	$("#die1").hide();
@@ -2601,6 +2601,9 @@ function play() {
 			}
 		}
 	}
+
+
+
 
 	updateMoney();
 	updatePosition();
@@ -2638,8 +2641,8 @@ game_ns._draw_setup.draw_player_wrappers = function(max) {
 
 	var content_intel = "";
 	content_intel += "<select class='player-intel' title='Choose whether this player is controled by a human or by the computer.'>";
-	content_intel += "	<option value='0' selected='selected'>Human</option>";
-	content_intel += "	<option value='1'>AI (Test)</option>";
+	content_intel += "	<option value='0' selected='selected'>Humano</option>";
+	content_intel += "	<option value='1'>IA (Test)</option>";
 	content_intel += "</select>";
 
   var content_colors = "<select class='player-color' title='Player color'>";
@@ -2651,8 +2654,8 @@ game_ns._draw_setup.draw_player_wrappers = function(max) {
 
   for (i = 1; i <= max; i++) {
 	  content += "<div id='player"+i+"wrap' data-id='"+i+"' class='player-wrap'>";
-	  content += "Player "+i+": ";
-	  content += "<input type='text' class='player-name' title='Player name' maxlength='16' value='Player "+i+"' /> ";
+	  content += "Jugador "+i+": ";
+	  content += "<input type='text' class='player-name' style='color: gray' title='Player name' Placeholder='Nombre' maxlength='16' required/> ";
 	  content += content_colors;
 	  content += " ";
 	  content += content_intel;
@@ -3076,10 +3079,10 @@ window.onload = function() {
 
 		if (p.money < s.houseprice) {
 			if (s.house === 4) {
-				popup("<p>You need $" + (s.houseprice - player[s.owner].money) + " more to buy a hotel for " + s.name + ".</p>");
+				popup("<p>Necesitas $" + (s.houseprice - player[s.owner].money) + " más para comprar un hotel en" + s.name + ".</p>");
 				return;
 			} else {
-				popup("<p>You need $" + (s.houseprice - player[s.owner].money) + " more to buy a house for " + s.name + ".</p>");
+				popup("<p>Necesitas $" + (s.houseprice - player[s.owner].money) + " más para comprar una casa en " + s.name + ".</p>");
 				return;
 			}
 		}
