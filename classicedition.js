@@ -1,7 +1,10 @@
 var squareData = [];
-var communityChestData;
-var chanceData;
+var communityChestData = [];
+var chanceData = [];
 
+var square = [];
+var communityChestCards = [];
+var chanceCards = [];
 
 function Square(name, pricetext, color, price, groupNumber, baserent, rent1, rent2, rent3, rent4, rent5) {
 	this.name = name;
@@ -41,8 +44,6 @@ function getSquares() {
 	    url: 'http://localhost/monopolio/data/sitios.txt',
 	    success: function (data) {
 			squareData = data.split("\n");
-		   	console.log(squareData);
-		    var square = [];
 			square[0] = new Square(squareData[0], "COLLECT $200 SALARY AS YOU PASS.", "#FFFFFF");
 			square[1] = new Square(squareData[1], "$60", "#8B4513", 60, 3, 2, 10, 30, 90, 160, 250);
 			square[2] = new Square(squareData[2], "FOLLOW INSTRUCTIONS ON TOP CARD", "#FFFFFF");
@@ -83,6 +84,7 @@ function getSquares() {
 			square[37] = new Square(squareData[37], "$350", "#0000FF", 350, 10, 35, 175, 500, 1100, 1300, 1500);
 			square[38] = new Square(squareData[38], "Pay $100", "#FFFFFF");
 			square[39] = new Square(squareData[39], "$400", "#0000FF", 400, 10, 50, 200, 600, 1400, 1700, 2000);
+			console.log(square);
 		}
 	})
 }
@@ -94,8 +96,6 @@ function getCommunityChest() {
 	    url: 'http://localhost/monopolio/data/arcacomunal.txt',
 	    success: function (data) {
 	    	communityChestData = data.split("\n");
-		   	console.log(communityChestData);
-			var communityChestCards = [];
 			communityChestCards[0] = new Card("Get out of Jail, Free. This card may be kept until needed or sold.", function(p) { p.communityChestJailCard = true; updateOwned();});
 			communityChestCards[1] = new Card("You have won second prize in a beauty contest. Collect $10.", function() { addamount(10, 'Community Chest');});
 			communityChestCards[2] = new Card("From sale of stock, you get $50.", function() { addamount(50, 'Community Chest');});
@@ -112,6 +112,7 @@ function getCommunityChest() {
 			communityChestCards[13] = new Card("Advance to \"GO\" (Collect $200).", function() { advance(0);});
 			communityChestCards[14] = new Card("You are assessed for street repairs. $40 per house. $115 per hotel.", function() { streetrepairs(40, 115);});
 			communityChestCards[15] = new Card("Go to Jail. Go directly to Jail. Do not pass \"GO\". Do not collect $200.", function() { gotojail();});
+		   	console.log(communityChestCards);
 		}
 	})
 }
@@ -124,8 +125,6 @@ function getChances() {
 	    url: 'http://localhost/monopolio/data/chances.txt',
 	    success: function (data) {
 	    	chanceData = data.split("\n");
-		   	console.log(chanceData);
-			var chanceCards = [];
 			chanceCards[0] = new Card("GET OUT OF JAIL FREE. This card may be kept until needed or traded.", function(p) { p.chanceJailCard=true; updateOwned();});
 			chanceCards[1] = new Card("Make General Repairs on All Your Property. For each house pay $25. For each hotel $100.", function() { streetrepairs(25, 100);});
 			chanceCards[2] = new Card("Speeding fine $15.", function() { subtractamount(15, 'Chance');});
@@ -142,6 +141,7 @@ function getChances() {
 			chanceCards[13] = new Card("ADVANCE TO THE NEAREST RAILROAD. If UNOWNED, you may buy it from the Bank. If OWNED, pay owner twice the rental to which they are otherwise entitled.", function() { advanceToNearestRailroad();});
 			chanceCards[14] = new Card("ADVANCE to St. Charles Place. If you pass \"GO\" collect $200.", function() { advance(11);});
 			chanceCards[15] = new Card("Go to Jail. Go Directly to Jail. Do not pass \"GO\". Do not collect $200.", function() { gotojail();});
+			console.log(chanceCards);
 		}
 	})
 }
