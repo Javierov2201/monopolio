@@ -1,0 +1,3 @@
+﻿¿Que tan inutil es Toni? 1. Es una berga o 2.Que se joda / 1
+¿Toni va a jalar merca? 1. Si o 2. De todas formas / 2
+¿Cuantos empleados tiene Toni? 1.Más de 5 o 2.Mas de 5 / 1

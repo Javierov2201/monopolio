@@ -1881,6 +1881,7 @@ function collectfromeachplayer(amount, cause) {
 
 function advance(destination, pass) {
 	var p = player[turn];
+	alert(pass);
 
 	if (typeof pass === "number") {
 		if (p.position < pass) {
@@ -2533,8 +2534,17 @@ function roll() {
 		// Collect $200 salary as you pass GO
 		if (p.position >= 40) {
 			p.position -= 40;
-			p.money += 200;
-			addAlert(p.name + " collected a $200 salary for passing GO.");
+
+			var rand = Math.round(Math.random()*qnaData.length);
+			console.log("Numero random: " + rand);
+			prompQuestion(rand);
+			if (isCorrect) {
+				p.money += 200;
+				addAlert(p.name + " collected a $200 salary for passing GO.");	
+			}
+			else {
+				addAlert(p.name + " No se colectó nada por pasar GO ");	
+			}
 		}
 
 		land();
@@ -2831,6 +2841,8 @@ window.onload = function() {
 	getChances();
 	getCommunityChest();
 	getSquares();
+	getCommunityChest();
+
 	setTimeout(function(){
   		alert("loading");
   		loadGame();
