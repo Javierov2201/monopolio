@@ -96,22 +96,22 @@ function getCommunityChest() {
 	    url: 'http://localhost/monopolio/data/arcacomunal.txt',
 	    success: function (data) {
 	    	communityChestData = data.split("\n");
-			communityChestCards[0] = new Card("Get out of Jail, Free. This card may be kept until needed or sold.", function(p) { p.communityChestJailCard = true; updateOwned();});
-			communityChestCards[1] = new Card("You have won second prize in a beauty contest. Collect $10.", function() { addamount(10, 'Community Chest');});
-			communityChestCards[2] = new Card("From sale of stock, you get $50.", function() { addamount(50, 'Community Chest');});
-			communityChestCards[3] = new Card("Life insurance matures. Collect $100.", function() { addamount(100, 'Community Chest');});
-			communityChestCards[4] = new Card("Income tax refund. Collect $20.", function() { addamount(20, 'Community Chest');});
-			communityChestCards[5] = new Card("Holiday fund matures. Receive $100.", function() { addamount(100, 'Community Chest');});
-			communityChestCards[6] = new Card("You inherit $100.", function() { addamount(100, 'Community Chest');});
-			communityChestCards[7] = new Card("Receive $25 consultancy fee.", function() { addamount(25, 'Community Chest');});
-			communityChestCards[8] = new Card("Pay hospital fees of $100.", function() { subtractamount(100, 'Community Chest');});
-			communityChestCards[9] = new Card("Bank error in your favor. Collect $200.", function() { addamount(200, 'Community Chest');});
-			communityChestCards[10] = new Card("Pay school fees of $50.", function() { subtractamount(50, 'Community Chest');});
-			communityChestCards[11] = new Card("Doctor's fee. Pay $50.", function() { subtractamount(50, 'Community Chest');});
-			communityChestCards[12] = new Card("It is your birthday. Collect $10 from every player.", function() { collectfromeachplayer(10, 'Community Chest');});
-			communityChestCards[13] = new Card("Advance to \"GO\" (Collect $200).", function() { advance(0);});
-			communityChestCards[14] = new Card("You are assessed for street repairs. $40 per house. $115 per hotel.", function() { streetrepairs(40, 115);});
-			communityChestCards[15] = new Card("Go to Jail. Go directly to Jail. Do not pass \"GO\". Do not collect $200.", function() { gotojail();});
+			communityChestCards[0] = new Card(communityChestData[0], function(p) { p.communityChestJailCard = true; updateOwned();});
+			communityChestCards[1] = new Card(communityChestData[1], function() { addamount(10, 'Community Chest');});
+			communityChestCards[2] = new Card(communityChestData[2], function() { addamount(50, 'Community Chest');});
+			communityChestCards[3] = new Card(communityChestData[3], function() { addamount(100, 'Community Chest');});
+			communityChestCards[4] = new Card(communityChestData[4], function() { addamount(20, 'Community Chest');});
+			communityChestCards[5] = new Card(communityChestData[5], function() { addamount(100, 'Community Chest');});
+			communityChestCards[6] = new Card(communityChestData[6], function() { addamount(100, 'Community Chest');});
+			communityChestCards[7] = new Card(communityChestData[7], function() { addamount(25, 'Community Chest');});
+			communityChestCards[8] = new Card(communityChestData[8], function() { subtractamount(100, 'Community Chest');});
+			communityChestCards[9] = new Card(communityChestData[9], function() { addamount(200, 'Community Chest');});
+			communityChestCards[10] = new Card(communityChestDat[10], function() { subtractamount(50, 'Community Chest');});
+			communityChestCards[11] = new Card(communityChestData[11], function() { subtractamount(50, 'Community Chest');});
+			communityChestCards[12] = new Card(communityChestData[12], function() { collectfromeachplayer(10, 'Community Chest');});
+			communityChestCards[13] = new Card(communityChestData[13], function() { advance(0);});
+			communityChestCards[14] = new Card(communityChestData[14], function() { streetrepairs(40, 115);});
+			communityChestCards[15] = new Card(communityChestData[15], function() { gotojail();});
 		   	console.log(communityChestCards);
 		}
 	})
@@ -125,22 +125,22 @@ function getChances() {
 	    url: 'http://localhost/monopolio/data/chances.txt',
 	    success: function (data) {
 	    	chanceData = data.split("\n");
-			chanceCards[0] = new Card("GET OUT OF JAIL FREE. This card may be kept until needed or traded.", function(p) { p.chanceJailCard=true; updateOwned();});
-			chanceCards[1] = new Card("Make General Repairs on All Your Property. For each house pay $25. For each hotel $100.", function() { streetrepairs(25, 100);});
-			chanceCards[2] = new Card("Speeding fine $15.", function() { subtractamount(15, 'Chance');});
-			chanceCards[3] = new Card("You have been elected chairman of the board. Pay each player $50.", function() { payeachplayer(50, 'Chance');});
-			chanceCards[4] = new Card("Go back three spaces.", function() { gobackthreespaces();});
-			chanceCards[5] = new Card("ADVANCE TO THE NEAREST UTILITY. IF UNOWNED, you may buy it from the Bank. IF OWNED, throw dice and pay owner a total ten times the amount thrown.", function() { advanceToNearestUtility();});
-			chanceCards[6] = new Card("Bank pays you dividend of $50.", function() { addamount(50, 'Chance');});
-			chanceCards[7] = new Card("ADVANCE TO THE NEAREST RAILROAD. If UNOWNED, you may buy it from the Bank. If OWNED, pay owner twice the rental to which they are otherwise entitled.", function() { advanceToNearestRailroad();});
-			chanceCards[8] = new Card("Pay poor tax of $15.", function() { subtractamount(15, 'Chance');});
-			chanceCards[9] = new Card("Take a trip to Reading Rail Road. If you pass \"GO\" collect $200.", function() { advance(5);});
-			chanceCards[10] = new Card("ADVANCE to Boardwalk.", function() { advance(39);});
-			chanceCards[11] = new Card("ADVANCE to Illinois Avenue. If you pass \"GO\" collect $200.", function() { advance(24);});
-			chanceCards[12] = new Card("Your building loan matures. Collect $150.", function() { addamount(150, 'Chance');});
-			chanceCards[13] = new Card("ADVANCE TO THE NEAREST RAILROAD. If UNOWNED, you may buy it from the Bank. If OWNED, pay owner twice the rental to which they are otherwise entitled.", function() { advanceToNearestRailroad();});
-			chanceCards[14] = new Card("ADVANCE to St. Charles Place. If you pass \"GO\" collect $200.", function() { advance(11);});
-			chanceCards[15] = new Card("Go to Jail. Go Directly to Jail. Do not pass \"GO\". Do not collect $200.", function() { gotojail();});
+			chanceCards[0] = new Card(chanceData[0], function(p) { p.chanceJailCard=true; updateOwned();});
+			chanceCards[1] = new Card(chanceData[1], function() { streetrepairs(25, 100);});
+			chanceCards[2] = new Card(chanceData[2], function() { subtractamount(15, 'Chance');});
+			chanceCards[3] = new Card(chanceData[3], function() { payeachplayer(50, 'Chance');});
+			chanceCards[4] = new Card(chanceData[4], function() { gobackthreespaces();});
+			chanceCards[5] = new Card(chanceData[5], function() { advanceToNearestUtility();});
+			chanceCards[6] = new Card(chanceData[6], function() { addamount(50, 'Chance');});
+			chanceCards[7] = new Card(chanceData[7], function() { advanceToNearestRailroad();});
+			chanceCards[8] = new Card(chanceData[8], function() { subtractamount(15, 'Chance');});
+			chanceCards[9] = new Card(chanceData[9], function() { advance(5);});
+			chanceCards[10] = new Card(chanceData[10], function() { advance(39);});
+			chanceCards[11] = new Card(chanceData[11], function() { advance(24);});
+			chanceCards[12] = new Card(chanceData[12], function() { addamount(150, 'Chance');});
+			chanceCards[13] = new Card(chanceData[13], function() { advanceToNearestRailroad();});
+			chanceCards[14] = new Card(chanceData[14], function() { advance(11);});
+			chanceCards[15] = new Card(chanceData[15], function() { gotojail();});
 			console.log(chanceCards);
 		}
 	})
