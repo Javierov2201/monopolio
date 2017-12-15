@@ -1881,7 +1881,6 @@ function collectfromeachplayer(amount, cause) {
 
 function advance(destination, pass) {
 	var p = player[turn];
-	alert(pass);
 
 	if (typeof pass === "number") {
 		if (p.position < pass) {
@@ -1896,8 +1895,7 @@ function advance(destination, pass) {
 		p.position = destination;
 	} else {
 		p.position = destination;
-		p.money += 200;
-		addAlert(p.name + " ha recogido un salario de $ 200 para pasar GO.");
+		askQuestionForGo(p);
 	}
 
 	land();
@@ -1912,8 +1910,7 @@ function advanceToNearestUtility() {
 		p.position = 28;
 	} else if (p.position >= 28) {
 		p.position = 12;
-		p.money += 200;
-		addAlert(p.name + " ha recogido un salario de $ 200 para pasar GO.");
+		askQuestionForGo(p);
 	}
 
 	land(true);
@@ -1930,8 +1927,7 @@ function advanceToNearestRailroad() {
 		p.position = 25;
 	} else if (p.position >= 35) {
 		p.position = 5;
-		p.money += 200;
-		addAlert(p.name + " ha recogido un salario de $ 200 para pasar GO.");
+		askQuestionForGo(p);
 	}
 
 	land(true);
@@ -2398,7 +2394,7 @@ function land(increasedRent) {
 		updatePosition();
 
 		if (p.human) {
-			popup("<div>Ir a la cárcel. Ir directamente a la cárcel. No pase GO. No recolectes $ 200.</div>", goToJail);
+			popup("<div>Ir a la cárcel. Ir directamente a la cárcel. No pase GO. No recolectes $ 200.</div>", gotojail);
 		} else {
 			gotojail();
 		}
@@ -2535,22 +2531,19 @@ function roll() {
 		if (p.position >= 40) {
 			p.position -= 40;
 
-			var rand = Math.round(Math.random()*qnaData.length);
-			console.log("Numero random: " + rand);
-			prompQuestion(rand);
-			
-			if (isCorrect) {
-				p.money += 200;
-				addAlert(p.name + " ha recogido un salario de $200 por pasar GO. ");	
-			}
-			else {
-				addAlert(p.name + " no se recogió nada por pasar GO. ");	
-			}
+			askQuestionForGo(p);
 		}
 
 		land();
 	}
 }
+
+function askQuestionForGo(per) {
+	var length = qnaData.length;
+	var rand = Math.round(Math.random()*(length-1));
+	console.log("indice random: " + rand);
+	prompQuestion(rand, per);
+};
 
 function play() {
 	if (game.auction()) {
@@ -2840,10 +2833,9 @@ function menuitem_onmouseout(element) {
 
 window.onload = function() {
 	getChances();
-	getCommunityChest();
+	getQuestions();
 	getSquares();
 	getCommunityChest();
-
 	setTimeout(function(){
   		
   		loadGame();

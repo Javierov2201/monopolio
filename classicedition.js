@@ -106,7 +106,7 @@ function getCommunityChest() {
 			communityChestCards[7] = new Card(communityChestData[7], function() { addamount(25, 'Community Chest');});
 			communityChestCards[8] = new Card(communityChestData[8], function() { subtractamount(100, 'Community Chest');});
 			communityChestCards[9] = new Card(communityChestData[9], function() { addamount(200, 'Community Chest');});
-			communityChestCards[10] = new Card(communityChestDat[10], function() { subtractamount(50, 'Community Chest');});
+			communityChestCards[10] = new Card(communityChestData[10], function() { subtractamount(50, 'Community Chest');});
 			communityChestCards[11] = new Card(communityChestData[11], function() { subtractamount(50, 'Community Chest');});
 			communityChestCards[12] = new Card(communityChestData[12], function() { collectfromeachplayer(10, 'Community Chest');});
 			communityChestCards[13] = new Card(communityChestData[13], function() { advance(0);});

@@ -3,36 +3,32 @@ var qnaData = [];
 var answer = "";
 var isCorrect = false;
 
-function prompQuestion(i) {
-	console.log($("p"));
-	$("#qtext").textContent = "floro";
+function prompQuestion(i, p) {
 	$( function() {
+		document.getElementById("qtext").textContent = qnaData[i].question;
 		$( "#question" ).dialog({
 			dialogClass: "no-close",
 		    buttons: {    
 		        "1": function() { 
 		        	if (qnaData[i].answer == 1) {
-		        		alert("Correcto!");
+		        		p.money += 200;
+						addAlert(p.name + " ha recogido un salario de $200 por pasar GO. ");
 		        		$(this).dialog("close");
-		        		isCorrect = true;
 		        	}
 		        	else {
-		        		alert("Incorrecto!");
+		        		addAlert(p.name + " no se recogió nada por pasar GO. ");
 		        		$(this).dialog("close");
-		        		isCorrect = false;
 		        	} 
 		        },
 		        "2": function() { 
 		        	if (qnaData[i].answer == 2) {
-		        		alert("Correcto!");
+		        		p.money += 200;
+						addAlert(p.name + " ha recogido un salario de $200 por pasar GO. ");
 		        		$(this).dialog("close");
-		        		isCorrect = true;
 		        	}
 		        	else {
-		        		alert("Incorrecto!");
-		        		$(this).dialog("close");
-		        		isCorrect = false;
-		        	} 
+						addAlert(p.name + " no se recogió nada por pasar GO. ");
+		        		$(this).dialog("close");		        	} 
 		        },
 	    	},
 	    	width: "400px"
@@ -40,9 +36,7 @@ function prompQuestion(i) {
 	});
 }
 
-prompQuestion(1);
-
-function getCommunityChest() {
+function getQuestions() {
 	$.ajax({
 		type: 'GET',
 	    cache: false,
