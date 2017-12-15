@@ -406,7 +406,7 @@ function Game() {
 				currentTableCellCheckbox = currentTableCell.appendChild(document.createElement("input"));
 				currentTableCellCheckbox.type = "checkbox";
 				currentTableCellCheckbox.id = "tradeleftcheckbox" + i;
-				currentTableCellCheckbox.title = "Check this box to include " + currentSquare.name + " in the trade.";
+				currentTableCellCheckbox.title = "Selecciona para incluir " + currentSquare.name + " in the transacción.";
 
 				currentTableCell = currentTableRow.appendChild(document.createElement("td"));
 				currentTableCell.className = "propertycellcolor";
@@ -553,13 +553,13 @@ function Game() {
 		if (initiatorSideTable.lastChild) {
 			initiatorProperty.appendChild(initiatorSideTable);
 		} else {
-			initiatorProperty.textContent = initiator.name + " has no properties to trade.";
+			initiatorProperty.textContent = initiator.name + " no tiene propiedades para vender.";
 		}
 
 		if (recipientSideTable.lastChild) {
 			recipientProperty.appendChild(recipientSideTable);
 		} else {
-			recipientProperty.textContent = recipient.name + " has no properties to trade.";
+			recipientProperty.textContent = recipient.name + " no tiene propiedades para vender.";
 		}
 
 		document.getElementById("trade-leftp-name").textContent = initiator.name;
@@ -744,13 +744,13 @@ function Game() {
 
 	this.acceptTrade = function(tradeObj) {
 		if (isNaN(document.getElementById("trade-leftp-money").value)) {
-			document.getElementById("trade-leftp-money").value = "This value must be a number.";
+			document.getElementById("trade-leftp-money").value = "Este valor debe ser un número.";
 			document.getElementById("trade-leftp-money").style.color = "red";
 			return false;
 		}
 
 		if (isNaN(document.getElementById("trade-rightp-money").value)) {
-			document.getElementById("trade-rightp-money").value = "This value must be a number.";
+			document.getElementById("trade-rightp-money").value = "Este valor debe ser un número.";
 			document.getElementById("trade-rightp-money").style.color = "red";
 			return false;
 		}
@@ -772,11 +772,11 @@ function Game() {
 
 
 		if (money > 0 && money > initiator.money) {
-			document.getElementById("trade-leftp-money").value = initiator.name + " does not have $" + money + ".";
+			document.getElementById("trade-leftp-money").value = initiator.name + " no tiene $" + money + ".";
 			document.getElementById("trade-leftp-money").style.color = "red";
 			return false;
 		} else if (money < 0 && -money > recipient.money) {
-			document.getElementById("trade-rightp-money").value = recipient.name + " does not have $" + (-money) + ".";
+			document.getElementById("trade-rightp-money").value = recipient.name + " no tiene $" + (-money) + ".";
 			document.getElementById("trade-rightp-money").style.color = "red";
 			return false;
 		}
@@ -792,12 +792,12 @@ function Game() {
 		isAPropertySelected |= tradeObj.getChanceJailCard();
 
 		if (isAPropertySelected === 0) {
-			popup("<p>One or more properties must be selected in order to trade.</p>");
+			popup("<p></p>");
 
 			return false;
 		}
 
-		if (showAlerts && !confirm(initiator.name + ", are you sure you want to make this exchange with " + recipient.name + "?")) {
+		if (showAlerts && !confirm(initiator.name + ", ¿Estás seguro de que quieres hacer este cambio con" + recipient.name + "?")) {
 			return false;
 		}
 
@@ -817,21 +817,21 @@ function Game() {
 		if (tradeObj.getCommunityChestJailCard() === 1) {
 			initiator.communityChestJailCard = false;
 			recipient.communityChestJailCard = true;
-			addAlert(recipient.name + ' received a "Get Out of Jail Free" card from ' + initiator.name + ".");
+			addAlert(recipient.name + ' ha recibido una carta "Salir de la carcel gratis" de ' + initiator.name + ".");
 		} else if (tradeObj.getCommunityChestJailCard() === -1) {
 			initiator.communityChestJailCard = true;
 			recipient.communityChestJailCard = false;
-			addAlert(initiator.name + ' received a "Get Out of Jail Free" card from ' + recipient.name + ".");
+			addAlert(initiator.name + ' ha recibido una carta "Salir de la carcel gratis" de ' + recipient.name + ".");
 		}
 
 		if (tradeObj.getChanceJailCard() === 1) {
 			initiator.chanceJailCard = false;
 			recipient.chanceJailCard = true;
-			addAlert(recipient.name + ' received a "Get Out of Jail Free" card from ' + initiator.name + ".");
+			addAlert(recipient.name + ' ha recibido una carta "Salir de la carcel gratis" de ' + initiator.name + ".");
 		} else if (tradeObj.getChanceJailCard() === -1) {
 			initiator.chanceJailCard = true;
 			recipient.chanceJailCard = false;
-			addAlert(initiator.name + ' received a "Get Out of Jail Free" card from ' + recipient.name + ".");
+			addAlert(initiator.name + ' ha recibido una carta "Salir de la carcel gratis" de ' + recipient.name + ".");
 		}
 
 		// Exchange money.
@@ -839,14 +839,14 @@ function Game() {
 			initiator.pay(money, recipient.index);
 			recipient.money += money;
 
-			addAlert(recipient.name + " received $" + money + " from " + initiator.name + ".");
+			addAlert(recipient.name + " ha recibido $" + money + " de " + initiator.name + ".");
 		} else if (money < 0) {
 			money = -money;
 
 			recipient.pay(money, initiator.index);
 			initiator.money += money;
 
-			addAlert(initiator.name + " received $" + money + " from " + recipient.name + ".");
+			addAlert(initiator.name + " ha recibido $" + money + " de " + recipient.name + ".");
 		}
 
 		updateOwned();
@@ -864,13 +864,13 @@ function Game() {
 
 	this.proposeTrade = function() {
 		if (isNaN(document.getElementById("trade-leftp-money").value)) {
-			document.getElementById("trade-leftp-money").value = "This value must be a number.";
+			document.getElementById("trade-leftp-money").value = "Este valor debe ser un número.";
 			document.getElementById("trade-leftp-money").style.color = "red";
 			return false;
 		}
 
 		if (isNaN(document.getElementById("trade-rightp-money").value)) {
-			document.getElementById("trade-rightp-money").value = "This value must be a number.";
+			document.getElementById("trade-rightp-money").value = "Este valor debe ser un número.";
 			document.getElementById("trade-rightp-money").style.color = "red";
 			return false;
 		}
@@ -882,11 +882,11 @@ function Game() {
 		var reversedTradeProperty = [];
 
 		if (money > 0 && money > initiator.money) {
-			document.getElementById("trade-leftp-money").value = initiator.name + " does not have $" + money + ".";
+			document.getElementById("trade-leftp-money").value = initiator.name + " no tiene $" + money + ".";
 			document.getElementById("trade-leftp-money").style.color = "red";
 			return false;
 		} else if (money < 0 && -money > recipient.money) {
-			document.getElementById("trade-rightp-money").value = recipient.name + " does not have $" + (-money) + ".";
+			document.getElementById("trade-rightp-money").value = recipient.name + " no tiene $" + (-money) + ".";
 			document.getElementById("trade-rightp-money").style.color = "red";
 			return false;
 		}
@@ -903,12 +903,12 @@ function Game() {
 		isAPropertySelected |= tradeObj.getChanceJailCard();
 
 		if (isAPropertySelected === 0) {
-			popup("<p>One or more properties must be selected in order to trade.</p>");
+			popup("<p>Se deben seleccionar una o más propiedades para la transacción.</p>");
 
 			return false;
 		}
 
-		if (initiator.human && !confirm(initiator.name + ", are you sure you want to make this offer to " + recipient.name + "?")) {
+		if (initiator.human && !confirm(initiator.name + ", ¿estás seguro que quieres hacer esta oferta para" + recipient.name + "?")) {
 			return false;
 		}
 
@@ -923,19 +923,19 @@ function Game() {
 			$("#accepttradebutton").show();
 			$("#rejecttradebutton").show();
 
-			addAlert(initiator.name + " initiated a trade with " + recipient.name + ".");
-			popup("<p>" + initiator.name + " has proposed a trade with you, " + recipient.name + ". You may accept, reject, or modify the offer.</p>");
+			addAlert(initiator.name + " ha iniciado una propuesta con " + recipient.name + ".");
+			popup("<p>" + initiator.name + " tiene una propuesta para ti, " + recipient.name + ". Puedes aceptar, rechazar, o modificar la oferta.</p>");
 		} else {
 			var tradeResponse = recipient.AI.acceptTrade(tradeObj);
 
 			if (tradeResponse === true) {
-				popup("<p>" + recipient.name + " has accepted your offer.</p>");
+				popup("<p>" + recipient.name + " ha aceptado tu oferta.</p>");
 				this.acceptTrade(reversedTrade);
 			} else if (tradeResponse === false) {
-				popup("<p>" + recipient.name + " has declined your offer.</p>");
+				popup("<p>" + recipient.name + " ha rechazado tu oferta.</p>");
 				return;
 			} else if (tradeResponse instanceof Trade) {
-				popup("<p>" + recipient.name + " has proposed a counteroffer.</p>");
+				popup("<p>" + recipient.name + " ha propuesto una contraoferta.</p>");
 				writeTrade(tradeResponse);
 
 				$("#proposetradebutton, #canceltradebutton").hide();
@@ -992,7 +992,7 @@ function Game() {
 			// }
 			// document.getElementById("refresh").innerHTML += "<br><br><div><textarea type='text' style='width: 980px;' onclick='javascript:select();' />" + text + "</textarea></div>";
 
-			popup("<p>Congratulations, " + player[1].name + ", you have won the game.</p><div>");
+			popup("<p>Congratulations, " + player[1].name + ", has ganado el juego.</p><div>");
 
 		} else {
 			play();
@@ -1007,7 +1007,7 @@ function Game() {
 			return;
 		}
 
-		var HTML = "<p>" + player[p.creditor].name + ", you may unmortgage any of the following properties, interest free, by clicking on them. Click OK when finished.</p><table>";
+		var HTML = "<p>" + player[p.creditor].name + ", puede deshipotecar cualquiera de las siguientes propiedades, sin intereses, haciendo clic en ellas. Haga clic en Aceptar cuando termine.</p><table>";
 		var price;
 
 		for (var i = 0; i < 40; i++) {
@@ -1097,8 +1097,8 @@ function Game() {
 		if (pcount === 2 || bankruptcyUnmortgageFee === 0 || p.creditor === 0) {
 			this.eliminatePlayer();
 		} else {
-			addAlert(pcredit.name + " paid $" + bankruptcyUnmortgageFee + " interest on the mortgaged properties received from " + p.name + ".");
-			popup("<p>" + pcredit.name + ", you must pay $" + bankruptcyUnmortgageFee + " interest on the mortgaged properties you received from " + p.name + ".</p>", function() {player[pcredit.index].pay(bankruptcyUnmortgageFee, 0); game.bankruptcyUnmortgage();});
+			addAlert(pcredit.name + " ha pagado $" + bankruptcyUnmortgageFee + " interés sobre las propiedades hipotecadas recibidas de " + p.name + ".");
+			popup("<p>" + pcredit.name + ", debes pagar $" + bankruptcyUnmortgageFee + " interest on the mortgaged properties you received from " + p.name + ".</p>", function() {player[pcredit.index].pay(bankruptcyUnmortgageFee, 0); game.bankruptcyUnmortgage();});
 		}
 	};
 
@@ -1519,7 +1519,7 @@ function updateOwned() {
 	}
 
 	if (HTML === "") {
-		HTML = p.name + ", No tenes propiedades.";
+		HTML = p.name + ", No tienes propiedades.";
 		$("#option").hide();
 	} else {
 		HTML += "</table>";
@@ -1642,7 +1642,7 @@ function updateOption() {
 				if (s.owner !== sq.owner) {
 					buyhousebutton.disabled = true;
 					sellhousebutton.disabled = true;
-					buyhousebutton.title = "Before you can buy a house, you must own all the properties of this color-group.";
+					buyhousebutton.title = "Antes de que pueda comprar una casa, debe poseer todas las propiedades de este grupo de colores.";
 				} else {
 
 					if (s.house > maxhouse) {
@@ -1665,7 +1665,7 @@ function updateOption() {
 
 			if (!allGroupUnmortgaged) {
 				buyhousebutton.disabled = true;
-				buyhousebutton.title = "Before you can buy a house, you must unmortgage all the properties of this color-group.";
+				buyhousebutton.title = "";
 			}
 
 			// Force even building
@@ -1673,20 +1673,20 @@ function updateOption() {
 				buyhousebutton.disabled = true;
 
 				if (sq.house == 1) {
-					buyhousebutton.title = "Before you can buy another house, the other properties of this color-group must all have one house.";
+					buyhousebutton.title = "Antes de que pueda comprar una casa, debe deshabilitar todas las propiedades de este grupo de colores.";
 				} else if (sq.house == 4) {
-					buyhousebutton.title = "Before you can buy a hotel, the other properties of this color-group must all have 4 houses.";
+					buyhousebutton.title = "Antes de que pueda comprar un hotel, las otras propiedades de este grupo de colores deben tener 4 casas.";
 				} else {
-					buyhousebutton.title = "Before you can buy a house, the other properties of this color-group must all have " + sq.house + " houses.";
+					buyhousebutton.title = "Antes de poder comprar una casa, las demás propiedades de este grupo de colores deben tener todas " + sq.house + " casas.";
 				}
 			}
 			if (sq.house < maxhouse) {
 				sellhousebutton.disabled = true;
 
 				if (sq.house == 1) {
-					sellhousebutton.title = "Before you can sell house, the other properties of this color-group must all have one house.";
+					sellhousebutton.title = "	Antes de poder vender una casa, las otras propiedades de este grupo de colores deben tener una sola casa.";
 				} else {
-					sellhousebutton.title = "Before you can sell a house, the other properties of this color-group must all have " + sq.house + " houses.";
+					sellhousebutton.title = "Antes de que pueda vender una casa, las otras propiedades de este grupo de colores deben tener todas " + sq.house + " casas.";
 				}
 			}
 
@@ -1700,7 +1700,7 @@ function updateOption() {
 
 			// Before a property can be mortgaged or sold, all the properties of its color-group must unimproved.
 			if (!allGroupUninproved) {
-				document.getElementById("mortgagebutton").title = "Before a property can be mortgaged, all the properties of its color-group must unimproved.";
+				document.getElementById("mortgagebutton").title = "Antes de que una propiedad pueda ser hipotecada, todas las propiedades de su grupo de color no deben mejorarse.";
 				document.getElementById("mortgagebutton").disabled = true;
 			}
 
@@ -1810,8 +1810,8 @@ function subtractamount(amount, cause) {
 
 function gotojail() {
 	var p = player[turn];
-	addAlert(p.name + " was sent directly to jail.");
-	document.getElementById("landed").innerHTML = "You are in jail.";
+	addAlert(p.name + " fue enviado directamente a la cárcel.");
+	document.getElementById("landed").innerHTML = "Estás en la cárcel.";
 
 	p.jail = true;
 	doublecount = 0;
@@ -1876,7 +1876,7 @@ function collectfromeachplayer(amount, cause) {
 		}
 	}
 
-	addAlert(p.name + " received $" + total + " from " + cause + ".");
+	addAlert(p.name + " ha recibido $" + total + " de " + cause + ".");
 }
 
 function advance(destination, pass) {
@@ -1888,7 +1888,7 @@ function advance(destination, pass) {
 		} else {
 			p.position = pass;
 			p.money += 200;
-			addAlert(p.name + " collected a $200 salary for passing GO.");
+			addAlert(p.name + " ");
 		}
 	}
 	if (p.position < destination) {
@@ -1896,7 +1896,7 @@ function advance(destination, pass) {
 	} else {
 		p.position = destination;
 		p.money += 200;
-		addAlert(p.name + " collected a $200 salary for passing GO.");
+		addAlert(p.name + " ha recogido un salario de $ 200 para pasar GO.");
 	}
 
 	land();
@@ -1912,7 +1912,7 @@ function advanceToNearestUtility() {
 	} else if (p.position >= 28) {
 		p.position = 12;
 		p.money += 200;
-		addAlert(p.name + " collected a $200 salary for passing GO.");
+		addAlert(p.name + " ha recogido un salario de $ 200 para pasar GO.");
 	}
 
 	land(true);
@@ -1930,7 +1930,7 @@ function advanceToNearestRailroad() {
 	} else if (p.position >= 35) {
 		p.position = 5;
 		p.money += 200;
-		addAlert(p.name + " collected a $200 salary for passing GO.");
+		addAlert(p.name + " ha recogido un salario de $ 200 para pasar GO.");
 	}
 
 	land(true);
@@ -1955,9 +1955,9 @@ function streetrepairs(houseprice, hotelprice) {
 
 		// If function was called by Community Chest.
 		if (houseprice === 40) {
-			addAlert(p.name + " lost $" + cost + " to Community Chest.");
+			addAlert(p.name + " perdió $" + cost + " para Community Chest.");
 		} else {
-			addAlert(p.name + " lost $" + cost + " to Chance.");
+			addAlert(p.name + " perdió $" + cost + " para Chance.");
 		}
 	}
 
@@ -1977,7 +1977,7 @@ function payfifty() {
 	p.position = 10;
 	p.pay(50, 0);
 
-	addAlert(p.name + " paid the $50 fine to get out of jail.");
+	addAlert(p.name + " pagó la multa de $ 50 para salir de la cárcel.");
 	updateMoney();
 	updatePosition();
 }
@@ -2020,7 +2020,7 @@ function useJailCard() {
 		}
 	}
 
-	addAlert(p.name + " used a \"Get Out of Jail Free\" card.");
+	addAlert(p.name + " usó una carta \"Salir de la cárcel gratis\" ");
 	updateOwned();
 	updatePosition();
 }
@@ -2053,7 +2053,7 @@ function buyHouse(index) {
 
 			} else {
 				sq.house++;
-				addAlert(p.name + " placed a house on " + sq.name + ".");
+				addAlert(p.name + " colocó una casa en" + sq.name + ".");
 			}
 
 		} else {
@@ -2063,7 +2063,7 @@ function buyHouse(index) {
 			} else {
 				sq.house = 5;
 				sq.hotel = 1;
-				addAlert(p.name + " placed a hotel on " + sq.name + ".");
+				addAlert(p.name + " colocó un hotel en " + sq.name + ".");
 			}
 		}
 
@@ -2081,10 +2081,10 @@ function sellHouse(index) {
 	if (sq.hotel === 1) {
 		sq.hotel = 0;
 		sq.house = 4;
-		addAlert(p.name + " sold the hotel on " + sq.name + ".");
+		addAlert(p.name + " vendió un hotel en " + sq.name + ".");
 	} else {
 		sq.house--;
-		addAlert(p.name + " sold a house on " + sq.name + ".");
+		addAlert(p.name + " vendió una casa en " + sq.name + ".");
 	}
 
 	p.money += sq.houseprice * 0.5;
@@ -2238,7 +2238,7 @@ function buy() {
 		$("#landed").hide();
 
 	} else {
-		popup("<p>" + p.name + ", you need $" + (property.price - p.money) + " more to buy " + property.name + ".</p>");
+		popup("<p>" + p.name + ", necesitas $" + (property.price - p.money) + " más para comprar " + property.name + ".</p>");
 	}
 }
 
@@ -2256,10 +2256,10 @@ function mortgage(index) {
 	sq.mortgage = true;
 	p.money += mortgagePrice;
 
-	document.getElementById("mortgagebutton").value = "Unmortgage for $" + unmortgagePrice;
-	document.getElementById("mortgagebutton").title = "Unmortgage " + sq.name + " for $" + unmortgagePrice + ".";
+	document.getElementById("mortgagebutton").value = "deshipotecar por $" + unmortgagePrice;
+	document.getElementById("mortgagebutton").title = "deshipotecar " + sq.name + " por $" + unmortgagePrice + ".";
 
-	addAlert(p.name + " mortgaged " + sq.name + " for $" + mortgagePrice + ".");
+	addAlert(p.name + " hipotecada " + sq.name + " por $" + mortgagePrice + ".");
 	updateOwned();
 	updateMoney();
 
@@ -2278,10 +2278,10 @@ function unmortgage(index) {
 
 	p.pay(unmortgagePrice, 0);
 	sq.mortgage = false;
-	document.getElementById("mortgagebutton").value = "Mortgage for $" + mortgagePrice;
-	document.getElementById("mortgagebutton").title = "Mortgage " + sq.name + " for $" + mortgagePrice + ".";
+	document.getElementById("mortgagebutton").value = "Hipotecada por $" + mortgagePrice;
+	document.getElementById("mortgagebutton").title = "Hipotecada " + sq.name + " por $" + mortgagePrice + ".";
 
-	addAlert(p.name + " unmortgaged " + sq.name + " for $" + unmortgagePrice + ".");
+	addAlert(p.name + " deshipotecar " + sq.name + " por $" + unmortgagePrice + ".");
 	updateOwned();
 	return true;
 }
@@ -2381,9 +2381,9 @@ function land(increasedRent) {
 		p.pay(rent, s.owner);
 		player[s.owner].money += rent;
 
-		document.getElementById("landed").innerHTML = "You landed on " + s.name + ". " + player[s.owner].name + " collected $" + rent + " rent.";
+		document.getElementById("landed").innerHTML = "Has caído en " + s.name + ". " + player[s.owner].name + " recolectó $" + rent + " renta.";
 	} else if (s.owner > 0 && s.owner != turn && s.mortgage) {
-		document.getElementById("landed").innerHTML = "You landed on " + s.name + ". Property is mortgaged; no rent was collected.";
+		document.getElementById("landed").innerHTML = "Has caído en " + s.name + ". La propiedad está hipotecada; no se recolectó ningún alquiler.";
 	}
 
 	// City Tax
@@ -2397,7 +2397,7 @@ function land(increasedRent) {
 		updatePosition();
 
 		if (p.human) {
-			popup("<div>Go to jail. Go directly to Jail. Do not pass GO. Do not collect $200.</div>", goToJail);
+			popup("<div>Ir a la cárcel. Ir directamente a la cárcel. No pase GO. No recolectes $ 200.</div>", goToJail);
 		} else {
 			gotojail();
 		}
@@ -2458,12 +2458,12 @@ function roll() {
 		} else if (doublecount === 3) {
 			p.jail = true;
 			doublecount = 0;
-			addAlert(p.name + " rolled doubles three times in a row.");
+			addAlert(p.name + " ");
 			updateMoney();
 
 
 			if (p.human) {
-				popup("You rolled doubles three times in a row. Go to jail.", goToJail);
+				popup("Lanzó dobles tres veces seguidas.", goToJail);
 			} else {
 				gotojail();
 			}
@@ -2494,14 +2494,14 @@ function roll() {
 			p.position = 10 + die1 + die2;
 			doublecount = 0;
 
-			addAlert(p.name + " rolled doubles to get out of jail.");
+			addAlert(p.name + " lanzó dados para salir de la carcel");
 
 			land();
 		} else {
 			if (p.jailroll === 3) {
 
 				if (p.human) {
-					popup("<p>You must pay the $50 fine.</p>", function() {
+					popup("<p>Debes pagar $50 .</p>", function() {
 						payFifty();
 						payfifty();
 						player[turn].position=10 + die1 + die2;
@@ -2514,7 +2514,7 @@ function roll() {
 				}
 			} else {
 				$("#landed").show();
-				document.getElementById("landed").innerHTML = "You are in jail.";
+				document.getElementById("landed").innerHTML = "Estás en la cárcel.";
 
 				if (!p.human) {
 					popup(p.AI.alertList, game.next);
@@ -2534,7 +2534,7 @@ function roll() {
 		if (p.position >= 40) {
 			p.position -= 40;
 			p.money += 200;
-			addAlert(p.name + " collected a $200 salary for passing GO.");
+			addAlert(p.name + " ha recogido un salario de $200 por pasar GO.");
 		}
 
 		land();
@@ -2576,21 +2576,21 @@ function play() {
 
 	if (p.jail) {
 		$("#landed").show();
-		document.getElementById("landed").innerHTML = "You are in jail.<input type='button' title='Pay $50 fine to get out of jail immediately.' value='Pay $50 fine' onclick='payfifty();' />";
+		document.getElementById("landed").innerHTML = "Estás en la cárcel.<input type='button' title='Pay $50 fine to get out of jail immediately.' value='Pagar $50' onclick='payfifty();' />";
 
 		if (p.communityChestJailCard || p.chanceJailCard) {
-			document.getElementById("landed").innerHTML += "<input type='button' id='gojfbutton' title='Use &quot;Get Out of Jail Free&quot; card.' onclick='useJailCard();' value='Use Card' />";
+			document.getElementById("landed").innerHTML += "<input type='button' id='gojfbutton' title='Use &quot;Get Out of Jail Free&quot; card.' onclick='useJailCard();' value='Usar carta' />";
 		}
 
-		document.getElementById("nextbutton").title = "Roll the dice. If you throw doubles, you will get out of jail.";
+		document.getElementById("nextbutton").title = "Tirar los dados. Si arrojas dobles, saldrás de la cárcel.";
 
 		if (p.jailroll === 0)
-			addAlert("This is " + p.name + "'s first turn in jail.");
+			addAlert("Esta es la primera vez de " + p.name + "en la cárcel.");
 		else if (p.jailroll === 1)
-			addAlert("This is " + p.name + "'s second turn in jail.");
+			addAlert("Esta es la segunda vez de " + p.name + "en la cárcel.");
 		else if (p.jailroll === 2) {
-			document.getElementById("landed").innerHTML += "<div>NOTE: If you do not throw doubles after this roll, you <i>must</i> pay the $50 fine.</div>";
-			addAlert("This is " + p.name + "'s third turn in jail.");
+			document.getElementById("landed").innerHTML += "Si no arrojas dobles después de esta tirada,<div>NOTA: <i>deberás</i> pagar $50.</div>";
+			addAlert("Esta es la tercera vez de " + p.name + "en la cárcel.");
 		}
 
 		if (!p.human && p.AI.postBail()) {
@@ -3066,15 +3066,15 @@ function loadGame() {
 
 		if (s.mortgage) {
 			if (player[s.owner].money < Math.round(s.price * 0.6)) {
-				popup("<p>You need $" + (Math.round(s.price * 0.6) - player[s.owner].money) + " more to unmortgage " + s.name + ".</p>");
+				popup("<p>You need $" + (Math.round(s.price * 0.6) - player[s.owner].money) + " más para deshipotecar " + s.name + ".</p>");
 
 			} else {
-				popup("<p>" + player[s.owner].name + ", are you sure you want to unmortgage " + s.name + " for $" + Math.round(s.price * 0.6) + "?</p>", function() {
+				popup("<p>" + player[s.owner].name + ", ¿Estás seguro de que quieres deshipotecar " + s.name + " por $" + Math.round(s.price * 0.6) + "?</p>", function() {
 					unmortgage(checkedProperty);
 				}, "Yes/No");
 			}
 		} else {
-			popup("<p>" + player[s.owner].name + ", are you sure you want to mortgage " + s.name + " for $" + Math.round(s.price * 0.5) + "?</p>", function() {
+			popup("<p>" + player[s.owner].name + ", ¿Estás seguro de que quieres hipotecar " + s.name + " por $" + Math.round(s.price * 0.5) + "?</p>", function() {
 				mortgage(checkedProperty);
 			}, "Yes/No");
 		}
@@ -3107,10 +3107,10 @@ function loadGame() {
 		}
 
 		if (s.house < 4 && houseSum >= 32) {
-			popup("<p>All 32 houses are owned. You must wait until one becomes available.</p>");
+			popup("<p>Las 32 casas son propiedad. Debes esperar hasta que esté disponible.</p>");
 			return;
 		} else if (s.house === 4 && hotelSum >= 12) {
-			popup("<p>All 12 hotels are owned. You must wait until one becomes available.</p>");
+			popup("<p>Los 12 hoteles son propiedad. Debes esperar hasta que esté disponible.</p>");
 			return;
 		}
 
