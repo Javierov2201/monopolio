@@ -22,6 +22,29 @@
 		.no-close .ui-dialog-titlebar-close {
 		  display: none;
 		}
+		.loader {
+		  border: 16px solid #f3f3f3;
+		  border-radius: 50%;
+		  border-top: 16px solid #3498db;
+		  width: 120px;
+		  height: 120px;
+		  -webkit-animation: spin 2s linear infinite; /* Safari */
+		  animation: spin 2s linear infinite;
+		}
+
+		/* Safari */
+		@-webkit-keyframes spin {
+		  0% { -webkit-transform: rotate(0deg); }
+		  100% { -webkit-transform: rotate(360deg); }
+		}
+
+		@keyframes spin {
+		  0% { transform: rotate(0deg); }
+		  100% { transform: rotate(360deg); }
+		}
+	
+	<style>
+		
 	</style>
 </head>
 
@@ -48,9 +71,9 @@
 		</div>
 	</div>
 	<center><h1 style="color: Orange">Monopolio KM</h1></center>
-	<p id="noscript">
-		Nota: Esta página no funcionará sin Javascripy
-	</p>
+	<div id="noscript" align="center">
+		<div class="loader"></div>
+	</div>
 
 	<div id="refresh">
 		Actualiza esta página para iniciar un nuevo juego
@@ -366,10 +389,10 @@
 			</tr>
 			<tr>
 				<td colspan="2" class="trade-cell">
-					<input type="button" id="proposetradebutton" value="Propose Trade" onclick="game.proposeTrade();" title="Cambiar el dinero y las propiedades que se marcan arriba." />
-					<input type="button" id="canceltradebutton" value="Cancel Trade" onclick='game.cancelTrade();' title="Cancelar el intercambio." />
-					<input type="button" id="accepttradebutton" value="Accept Trade" onclick="game.acceptTrade();" title="Aceptar el intercambio." />
-					<input type="button" id="rejecttradebutton" value="Reject Trade" onclick='game.cancelTrade();' title="Rechazar el intercambio." />
+					<input type="button" id="proposetradebutton" value="Proponer transacción" onclick="game.proposeTrade();" title="Cambiar el dinero y las propiedades que se marcan arriba." />
+					<input type="button" id="canceltradebutton" value="Cancelar transacción" onclick='game.cancelTrade();' title="Cancelar el intercambio." />
+					<input type="button" id="accepttradebutton" value="Aceptar transacción" onclick="game.acceptTrade();" title="Aceptar el intercambio." />
+					<input type="button" id="rejecttradebutton" value="Rechazar transacción" onclick='game.cancelTrade();' title="Rechazar el intercambio." />
 				</td>
 			</tr>
 		</table>
