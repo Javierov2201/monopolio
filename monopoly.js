@@ -2834,7 +2834,7 @@ window.onload = function() {
 	setTimeout(function(){
   		alert("loading");
   		loadGame();
-	}, 5000);
+	}, 1000);
 }
 
 
