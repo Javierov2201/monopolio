@@ -1,0 +1,41 @@
+GO
+Ing. Industrial
+Arca Comunal
+Ing. Economica
+Arquitectura
+Paga al Orce
+Comedor UNI
+Ing. Civil
+Chance
+Ing. de Minas
+Ing. Geologica
+Visita la carcel
+Ing. de Petreoleo
+CTIC
+Ing. Petroquimica
+Ing. Textil
+Gimnasio Uni
+Fisica
+Arca comunal
+Matematica
+Quimica
+Pabellon central
+Ing. Mecanica
+Chance
+Ing. Mecanico Electrica
+Ing. Mecatronica
+Coliseo UNI
+Ing. Electrica
+Ing. de Telecomunicaciones
+Biblioteca Central
+Ing. Electronica
+A la carcel
+Ing. Fisica
+Ing. Quimica
+Arca comunal
+Ing. Metalurgica
+Estadio Uni
+Chance
+Ciencies de la computacion
+Paga al ORCE
+Ing. de Sistemas

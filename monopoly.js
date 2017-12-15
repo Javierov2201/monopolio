@@ -2828,6 +2828,17 @@ function menuitem_onmouseout(element) {
 }
 
 window.onload = function() {
+	getChances();
+	getCommunityChest();
+	getSquares();
+	setTimeout(function(){
+  		alert("loading");
+  		loadGame();
+	}, 5000);
+}
+
+
+function loadGame() {
 	game_ns.draw_setup();
 
 	game = new Game();
