@@ -4,7 +4,11 @@
 	<title>Monopoly</title>
 	<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script type="text/javascript" src="classicedition.js"></script>
+	<script type="text/javascript" src="newyorkcityedition.js"></script>
+
+		<!--Bootstrap-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
 	<!-- Comment out the previous line and uncomment the next one to enable the New York City Edition -->
 	<!-- <script type="text/javascript" src="newyorkcityedition.js"></script> -->
 	<script type="text/javascript" src="ai.js"></script>
@@ -12,7 +16,7 @@
 	<link rel="stylesheet" type="text/css" href="styles.css" />
 </head>
 
-<body>
+<body style="text-align: center;  background-color:lightgray ">
 	<div id="popupbackground"></div>
 	<div id="popupwrap">
 		<div id="popup">
@@ -34,13 +38,13 @@
 			</div>
 		</div>
 	</div>
-
+	<center><h1 style="color: Orange">Monopolio KM</h1></center>
 	<p id="noscript">
-		Note: This page will not function without JavaScript.
+		Nota: Esta página no funcionará sin Javascripy
 	</p>
 
 	<div id="refresh">
-		Refresh this page to start a new game.
+		Actualiza esta página para iniciar un nuevo juego
 	</div>
 
 	<!-- <div id="enlarge"></div> -->
@@ -54,32 +58,32 @@
 			<table id="deed-table">
 				<tr>
 					<td colspan="2">
-						RENT&nbsp;$<span id="deed-baserent">12</span>.
+						RENTA&nbsp;$<span id="deed-baserent">12</span>.
 					</td>
 				</tr>
 				<tr>
-					<td style="text-align: left;">With 1 House</td>
+					<td style="text-align: left;">Con 1 Casa</td>
 					<td style="text-align: right;">$&nbsp;&nbsp;&nbsp;<span id="deed-rent1">60</span>.</td>
 				</tr>
 				<tr>
-					<td style="text-align: left;">With 2 Houses</td>
+					<td style="text-align: left;">Con 2 Casas</td>
 					<td style="text-align: right;"><span id="deed-rent2">180</span>.</td>
 				</tr>
 				<tr>
-					<td style="text-align: left;">With 3 Houses</td>
+					<td style="text-align: left;">Con 3 Casas</td>
 					<td style="text-align: right;"><span id="deed-rent3">500</span>.</td>
 				</tr>
 				<tr>
-					<td style="text-align: left;">With 4 Houses</td>
+					<td style="text-align: left;">Con 4 Casas</td>
 					<td style="text-align: right;"><span id="deed-rent4">700</span>.</td>
 				</tr>
 				<tr>
 					<td colspan="2">
-						<div style="margin-bottom: 8px;">With HOTEL $<span id="deed-rent5">900</span>.</div>
-						<div>Mortgage Value $<span id="deed-mortgage">80</span>.</div>
-						<div>Houses cost $<span id="deed-houseprice">100</span>. each</div>
-						<div>Hotels, $<span id="deed-hotelprice">100</span>. plus 4 houses</div>
-						<div style="font-size: 9px; font-style: italic; margin-top: 5px;">If a player owns ALL the Lots of any Color-Group, the rent is Doubled on Unimproved Lots in that group.</div>
+						<div style="margin-bottom: 8px;">Con HOTEL $<span id="deed-rent5">900</span>.</div>
+						<div>Valor de Hipoteca $<span id="deed-mortgage">80</span>.</div>
+						<div>Costo de las casas $<span id="deed-houseprice">100</span>. each</div>
+						<div>Hoteles, $<span id="deed-hotelprice">100</span>. plus 4 houses</div>
+						<div style="font-size: 9px; font-style: italic; margin-top: 5px;">Si un jugador posee TODOS los lotes de cualquier grupo de colores, el alquiler se duplica en lotes no mejorados en ese grupo.</div>
 					</td>
 				</tr>
 			</table>
@@ -88,17 +92,17 @@
 		<div id="deed-mortgaged">
 			<div id="deed-mortgaged-name"></div>
 			<p>&bull;</p>
-			<div>MORTGAGED</div>
-			<div> for $<span id="deed-mortgaged-mortgage">80</span></div>
+			<div>Hipotecado</div>
+			<div> por $<span id="deed-mortgaged-mortgage">80</span></div>
 			<p>&bull;</p>
-			<div style="font-style: italic; font-size: 13px; margin: 10px;">Card must be turned this side up if property is mortgaged</div>
+			<div style="font-style: italic; font-size: 13px; margin: 10px;">La tarjeta debe voltearse de este lado si la propiedad está hipotecada</div>
 		</div>
 
 		<div id="deed-special">
 			<div id="deed-special-name"></div>
 			<div id="deed-special-text"></div>
 			<div id="deed-special-footer">
-				Mortgage Value
+				Valor de Hipoteca
 				<span style="float: right;">$<span id="deed-special-mortgage">100</span>.</span>
 			</div>
 		</div>
@@ -170,70 +174,71 @@
 		</tr>
 	</table>
 
-	<div id="moneybarwrap">
-		<div id="moneybar">
+	<div id="moneybarwrap" >
+		<div id="moneybar" style="border: red 1px">
 			<table>
 				<tr id="moneybarrow0" class="money-bar-row">
 
 					<td class="moneybararrowcell"><img src="images/arrow.png" id="p0arrow" class="money-bar-arrow" alt=">" /></td>
 					<td id="p0moneybar" class="moneybarcell">
-						<div><span id="p0moneyname" >Player 0</span>:</div>
+						<div><span id="p0moneyname" >Jugador 0</span>:</div>
 						<div>$<span id="p0money">1500</span></div>
 					</td>
 				</tr>
 				<tr id="moneybarrow1" class="money-bar-row">
 					<td class="moneybararrowcell"><img src="images/arrow.png" id="p1arrow" class="money-bar-arrow" alt=">"/></td>
 					<td id="p1moneybar" class="moneybarcell">
-						<div><span id="p1moneyname" >Player 1</span>:</div>
+						<div><span id="p1moneyname" >Jugador 1</span>:</div>
 						<div>$<span id="p1money">1500</span></div>
 					</td>
 				</tr>
 				<tr id="moneybarrow2" class="money-bar-row">
 					<td class="moneybararrowcell"><img src="images/arrow.png" id="p2arrow" class="money-bar-arrow" alt=">" /></td>
 					<td id="p2moneybar" class="moneybarcell">
-						<div><span id="p2moneyname" >Player 2</span>:</div>
+						<div><span id="p2moneyname" >Jugador 2</span>:</div>
 						<div>$<span id="p2money">1500</span></div>
 					</td>
 				</tr>
 				<tr id="moneybarrow3" class="money-bar-row">
 					<td class="moneybararrowcell"><img src="images/arrow.png" id="p3arrow" class="money-bar-arrow" alt=">" /></td>
 					<td id="p3moneybar" class="moneybarcell">
-						<div><span id="p3moneyname" >Player 3</span>:</div>
+						<div><span id="p3moneyname" >Jugador 3</span>:</div>
 						<div>$<span id="p3money">1500</span></div>
 					</td>
 				</tr>
 				<tr id="moneybarrow4" class="money-bar-row">
 					<td class="moneybararrowcell"><img src="images/arrow.png" id="p4arrow" class="money-bar-arrow" alt=">" /></td>
 					<td id="p4moneybar" class="moneybarcell">
-						<div><span id="p4moneyname" >Player 4</span>:</div>
+						<div><span id="p4moneyname" >Jugador 4</span>:</div>
 						<div>$<span id="p4money">1500</span></div>
 					</td>
 				</tr>
 				<tr id="moneybarrow5" class="money-bar-row">
 					<td class="moneybararrowcell"><img src="images/arrow.png" id="p5arrow" class="money-bar-arrow" alt=">" /></td>
 					<td id="p5moneybar" class="moneybarcell">
-						<div><span id="p5moneyname" >Player 5</span>:</div>
+						<div><span id="p5moneyname" >Jugador 5</span>:</div>
 						<div>$<span id="p5money">1500</span></div>
 					</td>
 				</tr>
 				<tr id="moneybarrow6" class="money-bar-row">
 					<td class="moneybararrowcell"><img src="images/arrow.png" id="p6arrow" class="money-bar-arrow" alt=">" /></td>
 					<td id="p6moneybar" class="moneybarcell">
-						<div><span id="p6moneyname" >Player 6</span>:</div>
+						<div><span id="p6moneyname" >Jugador 6</span>:</div>
 						<div>$<span id="p6money">1500</span></div>
 					</td>
 				</tr>
 				<tr id="moneybarrow7" class="money-bar-row">
 					<td class="moneybararrowcell"><img src="images/arrow.png" id="p7arrow" class="money-bar-arrow" alt=">" /></td>
 					<td id="p7moneybar" class="moneybarcell">
-						<div><span id="p7moneyname" >Player 7</span>:</div>
+						<div><span id="p7moneyname" >Jugador 7</span>:</div>
 						<div>$<span id="p7money">1500</span></div>
 					</td>
 				</tr>
 				<tr id="moneybarrow8">
 					<td style="border: none;" class="moneybararrowcell">&nbsp;</td>
 					<td style="border: none;">
-						<input type="button" id="viewstats" value="View stats" title="View a pop-up window that shows a list of each player's properties." />
+						<input type="button" id="viewstats" value="View stats" title="Ver una ventana emergente que muestra una lista de las propiedades de cada jugador.
+" />
 					</td>
 				</tr>
 			</table>
@@ -242,8 +247,8 @@
 
 	<div id="setup">
 		<div style="margin-bottom: 20px;">
-			Select number of players.
-			<select id="playernumber" title="Select the number of players for the game.">
+			Selecciona el número de jugadores.
+			<select id="playernumber" title="Selecciona el número de jugadores">
 				<option>2</option>
 				<option>3</option>
 				<option selected="selected">4</option>
@@ -258,10 +263,10 @@
 		</div>
 
 		<div style="margin: 20px 0px;">
-			<input type="button" value="Start Game" onclick="game_ns.setup();" title="Begin playing." />
+			<input type="button" value="Iniciar Juego" onclick="game_ns.setup();" title="Comienza a jugar" />
 		</div>
 
-		<div id="noF5">Note: Refreshing this page or navigating away from it may end your game without warning.</div>
+		<div id="noF5">Nota: Actualizar esta página o navegar fuera de ella puede finalizar su juego sin previo aviso.</div>
 	</div>
 
 	<div id="control">
@@ -273,15 +278,15 @@
 							<tr>
 								<td class="menu-item" id="buy-menu-item">
 
-									<a href="javascript:void(0);" title="View alerts and buy the property you landed on.">Buy</a>
+									<a href="javascript:void(0);" title="Ver alertas y comprar la propiedad en la que aterrizó.">Comprar</a>
 								</td>
 								<td class="menu-item" id="manage-menu-item">
 
-									<a href="javascript:void(0);" title="View, mortgage, and improve your property. ">Manage</a>
+									<a href="javascript:void(0);" title="Vea, hipoteque y mejore su propiedad. ">Administrar</a>
 								</td>
 								<td class="menu-item" id="trade-menu-item">
 
-									<a href="javascript:void(0);" title="Exchange property with other players.">Trade</a>
+									<a href="javascript:void(0);" title="Cambiar propiedad con otros jugadores">Vender</a>
 								</td>
 							</tr>
 						</table>
@@ -304,7 +309,7 @@
 				</td>
 				<td style="vertical-align: top; border: none;">
 					<div id="quickstats" style="">
-							<div><span id="pname" >Player 1</span>:</div>
+							<div><span id="pname" >Jugador 1</span>:</div>
 							<div><span id="pmoney">$1500</span></div>
 					</div>
 					<div>
@@ -316,8 +321,8 @@
 			</tr><tr>
 				<td colspan="2" style="border: none">
 					<div style="padding-top: 8px;">
-						<input type="button" id="nextbutton" title="Roll the dice and move your token accordingly." value="Roll Dice"/>
-						<input type="button" id="resignbutton" title="If you cannot pay your debt then you must resign from the game." value="Resign" onclick="game.resign();" />
+						<input type="button" id="nextbutton" title="Tira los dados y mueve tu ficha en consecuencia." value="Roll Dice"/>
+						<input type="button" id="resignbutton" title="Si no puede pagar su deuda, debe renunciar al juego." value="Resign" onclick="game.resign();" />
 					</div>
 				</td>
 			</tr>
@@ -336,10 +341,10 @@
 			</tr>
 			<tr>
 				<td class="trade-cell">
-					$&nbsp;<input id="trade-leftp-money" value="0" title="Enter amount to exchange with the other player." />
+					$&nbsp;<input id="trade-leftp-money" value="0" title="Ingrese la cantidad para intercambiar con el otro jugador." />
 				</td>
 				<td class="trade-cell">
-					$&nbsp;<input id="trade-rightp-money" value="0" title="Enter amount to exchange with the other player." />
+					$&nbsp;<input id="trade-rightp-money" value="0" title="Ingrese la cantidad para intercambiar con el otro jugador." />
 				</td>
 			</tr>
 			<tr>
@@ -348,10 +353,10 @@
 			</tr>
 			<tr>
 				<td colspan="2" class="trade-cell">
-					<input type="button" id="proposetradebutton" value="Propose Trade" onclick="game.proposeTrade();" title="Exchange the money and properties that are checked above." />
-					<input type="button" id="canceltradebutton" value="Cancel Trade" onclick='game.cancelTrade();' title="Cancel the trade." />
-					<input type="button" id="accepttradebutton" value="Accept Trade" onclick="game.acceptTrade();" title="Accept the proposed trade." />
-					<input type="button" id="rejecttradebutton" value="Reject Trade" onclick='game.cancelTrade();' title="Reject the proposed trade." />
+					<input type="button" id="proposetradebutton" value="Propose Trade" onclick="game.proposeTrade();" title="Cambiar el dinero y las propiedades que se marcan arriba." />
+					<input type="button" id="canceltradebutton" value="Cancel Trade" onclick='game.cancelTrade();' title="Cancelar el intercambio." />
+					<input type="button" id="accepttradebutton" value="Accept Trade" onclick="game.acceptTrade();" title="Aceptar el intercambio." />
+					<input type="button" id="rejecttradebutton" value="Reject Trade" onclick='game.cancelTrade();' title="Rechazar el intercambio." />
 				</td>
 			</tr>
 		</table>
