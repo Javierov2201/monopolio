@@ -5,37 +5,36 @@ Ing. Economica
 Arquitectura
 Paga al Orce
 Comedor UNI
-Ing. Civil
 Chance
+Ing. Civil
 Ing. de Minas
-Ing. Geologica
 Visita la carcel
+Ing. Geologica
 Ing. de Petreoleo
 CTIC
 Ing. Petroquimica
 Ing. Textil
 Gimnasio Uni
-Fisica
 Arca comunal
+Fisica Pura
 Matematica
-Quimica
-Pabellon central
+Quimica Pura
 Ing. Mecanica
 Chance
+Pabellon central
 Ing. Mecanico Electrica
 Ing. Mecatronica
 Coliseo UNI
 Ing. Electrica
-Ing. de Telecomunicaciones
+Ing. de Telec.
 Biblioteca Central
-Ing. Electronica
 A la carcel
+Ing. Electronica
 Ing. Fisica
-Ing. Quimica
 Arca comunal
+Ing. Quimica
 Ing. Metalurgica
-Estadio Uni
 Chance
-Ciencies de la computacion
+Estadio Uni
 Paga al ORCE
-Ing. de Sistemas
+Ciencies de la computacion
