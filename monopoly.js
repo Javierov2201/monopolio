@@ -2832,9 +2832,9 @@ window.onload = function() {
 	getCommunityChest();
 	getSquares();
 	setTimeout(function(){
-  		alert("loading");
+  		
   		loadGame();
-	}, 1000);
+	}, 3000);
 }
 
 
