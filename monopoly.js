@@ -1519,7 +1519,7 @@ function updateOwned() {
 	}
 
 	if (HTML === "") {
-		HTML = p.name + ", you don't have any properties.";
+		HTML = p.name + ", No tenes propiedades.";
 		$("#option").hide();
 	} else {
 		HTML += "</table>";
