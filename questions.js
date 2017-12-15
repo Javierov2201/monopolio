@@ -12,10 +12,12 @@ function prompQuestion(i, p) {
 		        "1": function() { 
 		        	if (qnaData[i].answer == 1) {
 		        		p.money += 200;
+		        		alert("Correcto!");
 						addAlert(p.name + " ha recogido un salario de $200 por pasar GO. ");
 		        		$(this).dialog("close");
 		        	}
 		        	else {
+		        		alert("Incorrecto!");
 		        		addAlert(p.name + " no se recogió nada por pasar GO. ");
 		        		$(this).dialog("close");
 		        	} 
@@ -23,10 +25,12 @@ function prompQuestion(i, p) {
 		        "2": function() { 
 		        	if (qnaData[i].answer == 2) {
 		        		p.money += 200;
+		        		alert("Correcto!");
 						addAlert(p.name + " ha recogido un salario de $200 por pasar GO. ");
 		        		$(this).dialog("close");
 		        	}
 		        	else {
+		        		alert("Incorrecto!");
 						addAlert(p.name + " no se recogió nada por pasar GO. ");
 		        		$(this).dialog("close");		        	} 
 		        },
