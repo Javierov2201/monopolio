@@ -1,16 +1,16 @@
 Salga de carcel gratis
-Fuiste el primero puesto de tu carrera, ganaste 10
-Ganaste 50 en una rifa
-Postulaste al tercio, paga 50 a cada jugador
 Mantenimiento de propiedades. 25 por casa, 100 por hotel
-Multa del ceiis por no votar, pague 15
+Paga multa al aduni 15
+Postulaste al tercio, paga 50 a cada jugador
 Retroceda 3 espacios
 Avance al centro uni (CRAI O CTIC), si no es de nadie puede compralo, si es de alguien pague 10 veces el valor del dado. 
+Ganaste 50 en una rifa
 Avance al espacio uni (Comedor, gimnasio, coliseo, estadio), si no es de nadie puede compralo, si es de alguien pague la renta
-Paga multa al aduni 15
+Multa del ceiis por no votar, pague 15
 Vaya al comedor UNI! 
+Vaya a la escuela de Ciencies de computcion.
 Vaya a la escuela de Mecatronica (Ing Mecatronica)
+Fuiste el primero puesto de tu carrera, ganaste 150
 Avance al espacio uni (Comedor, gimnasio, coliseo, estadio), si no es de nadie puede compralo, si es de alguien pague la renta
-Vaya a la escuela de Petroleo (Ing de Petroleo).
-Eres culpado de ensuciar la UNI, paga 40 por casa y 115 por hotel.
-Vayase directamente a la carcel.
+Vaya a la escuela de Petroleo (Ingeniera de petroleo)
+Eres culpado de ensuciar la UNI, directo a la carcel.

@@ -2,39 +2,39 @@ GO
 Ing. Industrial
 Arca Comunal
 Ing. Economica
-Trica
 Paga al Orce
 Comedor UNI
+Ing. Geologica
 Chance
 Ing. Civil
 Ing. de Minas
 Visita la carcel
-Ing. Geologica
 Ing. de Petreoleo
 CTIC
 Ing. Petroquimica
 Ing. Textil
 Gimnasio Uni
+Quimica Pura
 Arca comunal
 Fisica Pura
 Matematica
 Pabellon central
 Ing. Mecanica
 Chance
-Quimica Pura
 Ing. Mecanico Electrica
 Ing. Mecatronica
 Coliseo UNI
 Ing. Electrica
-Ing. de Telec.
-Biblioteca Central
-A la carcel
 Ing. Electronica
-Ing. Fisica
+Biblioteca Central
+Ing. de Telec.
+A la carcel
+Arquitectura
+Ing. Sanitaria
 Arca comunal
-Ing. Quimica
-Ing. Metalurgica
-Chance
+Ing. Ambiental
 Estadio Uni
+Chance
+Ing. Sistemas
 Paga al ORCE
 Ciencies de la computacion
