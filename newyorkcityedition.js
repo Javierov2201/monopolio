@@ -70,6 +70,12 @@ function luxurytax() {
 
 var square = [];
 
+var cardRules = new Array();
+    $.get('./data/sitios.txt', function(data){
+            cardRules = data.split('\n');
+            console.log(cardRules);
+        });
+
 square[0] = new Square("GO", "COLLECT $200 SALARY AS YOU PASS.", "white");
 square[1] = new Square("Port Authority Bus Terminal", "$60", "#4B0082", 60, 3, 2, 10, 30, 90, 160, 250);
 square[2] = new Square("Community Chest", "FOLLOW INSTRUCTIONS ON TOP CARD", "white");
