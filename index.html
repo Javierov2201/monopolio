@@ -16,7 +16,6 @@
 	<!-- Comment out the previous line and uncomment the next one to enable the New York City Edition -->
 	<!-- <script type="text/javascript" src="newyorkcityedition.js"></script> -->
 	<script type="text/javascript" src="scripts/ai.js"></script>
-	<script type="text/javascript" src="scripts/monopoly.js"></script>
 	<link rel="stylesheet" type="text/css" href="styles/styles.css" />
 	<style>
 		.no-close .ui-dialog-titlebar-close {
@@ -298,10 +297,15 @@
 		</div>
 
 		<div style="margin: 20px 0px;">
-			<input type="button" value="Iniciar Juego" onclick="game_ns.setup();" title="Comienza a jugar" />
+			<input type="button" class="btn btn-info" value="Iniciar Juego" onclick="game_ns.setup();" title="Comienza a jugar" />
 		</div>
 
 		<div id="noF5">Nota: Actualizar esta página o navegar fuera de ella puede finalizar su juego sin previo aviso.</div>
+		<form>
+			<input type="button" value="Put Your Text Here" onclick="window.location.href='/monopolio/preguntas/newQuest.html'" />
+		</form>
+
+
 	</div>
 
 	<div id="control">
