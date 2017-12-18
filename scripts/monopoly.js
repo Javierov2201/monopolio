@@ -2659,7 +2659,7 @@ game_ns._draw_setup.draw_player_wrappers = function(max) {
   for (i = 1; i <= max; i++) {
 	  content += "<div id='player"+i+"wrap' data-id='"+i+"' class='player-wrap'>";
 	  content += "Jugador "+i+": ";
-	  content += "<input type='text' class='player-name form-control' style='color: gray' title='Player name' Placeholder='Nombre' maxlength='16' required/> ";
+	  content += "<input type='text' class='player-name' style='color: gray' title='Player name' Placeholder='Nombre' maxlength='16' required/> ";
 	  content += content_colors;
 	  content += " ";
 	  content += content_intel;

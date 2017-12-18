@@ -29,45 +29,50 @@
 <body>
 	<center>
         <h1 style="color: Orange">Monopolio KM</h1>
-        <h3 style="color: black">Editor de preguntas</h3>
+        <h3 style="color: black">Editor</h3>
         <div class="sublayout" style=" background-color: #e7e7e7; border: 1px; border-radius: 10px; height: auto; padding-bottom: 50px;" >
             <nav class="navbar navbar-default" >
                     <ul class="nav navbar-nav">
-                        <li id="ap" class="active"><a href="">Añadir Preguntas</a></li>
-                        <li id="ep" ><a href="editQuest.html">Editar Pregunta</a></li>
+                        <li class="active"><a href="">Añadir Preguntas</a></li>
+                        <li ><a href="searchQuest.php">Editar Pregunta</a></li>
+                        <li ><a href="../locaciones/editLoc.php">Editar Locaciones</a></li>
                     </ul>
+                <form class="navbar-form navbar-left" action="../index.html">
+                    <button type="submit" class="btn btn-danger">Jugar</button>
+                </form>
             </nav>
             <div id="añadirpreguntas">
                 <center>
+                    <form action="questAdd.php" method="POST" enctype="multipart/form-data">
                     <table style="width:60%;">
                         <h3 style="color: darkblue;">Añadir pregunta</h3>
                         <col width="30%">
                         <col width="70%">
                         <tr>
                             <th>Pregunta</th>
-                            <th><input type="text" class="form-control" style="width: 90%"></th>
+                            <th><input type="text" name="txtPregunta" class="form-control" style="width: 90%"></th>
                         </tr>
                         <tr>
                             <th>Alternativa 1</th>
-                            <th><input type="text" class="form-control" style="width: 90%"></th>
+                            <th><input type="text" name="txtA1" class="form-control" style="width: 90%"></th>
                         </tr>
                         <tr>
                             <th>Alternativa 2</th>
-                            <th><input type="text" class="form-control" style="width: 90%"></th>
+                            <th><input type="text" name="txtA2" class="form-control" style="width: 90%"></th>
                         </tr>
                         <tr>
                             <th>Alternativa 3</th>
-                            <th><input type="text" class="form-control" style="width: 90%"></th>
+                            <th><input type="text" name="txtA3" class="form-control" style="width: 90%"></th>
                         </tr>
                         <tr>
                             <th>Alternativa 4</th>
-                            <th><input type="text" class="form-control" style="width: 90%"></th>
+                            <th><input type="text" name="txtA4" class="form-control" style="width: 90%"></th>
                         </tr>
                         <tr>
                             <th>Respuesta correcta</th>
                             <th>
                                 <center>
-                                    <select name="alternativas" class="form-control" id="alternativas" style="width: 70%; align-items: center">
+                                    <select name="txtRespuesta" class="form-control" id="alternativas" style="width: 70%; align-items: center">
                                         <option value="a1">Alternativa 1</option>
                                         <option value="a2">Alternativa 2</option>
                                         <option value="a3">Alternativa 3</option>
@@ -77,7 +82,8 @@
                             </th>
                         </tr>
                     </table>
-                    <button type="button" class="btn btn-success" style="margin-top: 10px">Guardar pregunta</button>
+                        <input id="nextButton" type="submit" name="next" class="action-button btn btn-success" value="Guardar pregunta" />
+                    </form>
                 </center>
             </div>
         </div>
