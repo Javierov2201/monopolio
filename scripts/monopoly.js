@@ -1767,8 +1767,16 @@ function chanceAction(chanceIndex) {
 
     // $('#popupbackground').hide();
     // $('#popupwrap').hide();
-
-    askQuestion(p, chanceCards[chanceIndex].action);
+    if( chanceIndex==6 ||chanceIndex==12 || chanceIndex==0){
+    	askQuestion(p, chanceCards[chanceIndex].action, 1);
+    }
+    if ( chanceIndex==1 &&chanceIndex==2  || chanceIndex==8  || chanceIndex==15 ||  chanceIndex==3){
+    	askQuestion(p, chanceCards[chanceIndex].action, 0);
+    }
+    if ( chanceIndex==4 || chanceIndex==5 || chanceIndex==7 || chanceIndex==9  || chanceIndex==10  || chanceIndex==11 || chanceIndex==13 || chanceIndex==14){
+    	askQuestion(p, chanceCards[chanceIndex].action, 2);
+    }
+    
     //chanceCards[chanceIndex].action(p);
 
     updateMoney();
@@ -1897,7 +1905,7 @@ function advance(destination, pass) {
         p.position = destination;
     } else {
         p.position = destination;
-        askQuestion(p, collectGo);
+        askQuestion(p, collectGo, 1);
     }
 
     land();
@@ -1912,7 +1920,7 @@ function advanceToNearestUtility() {
         p.position = 28;
     } else if (p.position >= 28) {
         p.position = 12;
-        askQuestion(p, collectGo);
+        askQuestion(p, collectGo, 1);
     }
 
     land(true);
@@ -1929,7 +1937,7 @@ function advanceToNearestRailroad() {
         p.position = 25;
     } else if (p.position >= 35) {
         p.position = 5;
-        askQuestion(p, collectGo);
+        askQuestion(p, collectGo, 1);
     }
 
     land(true);
@@ -2533,7 +2541,7 @@ function roll() {
         if (p.position >= 40) {
             p.position -= 40;
 
-            askQuestion(p, collectGo);
+            askQuestion(p, collectGo, 1);
         }
 
         land();

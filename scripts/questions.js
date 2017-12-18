@@ -2,7 +2,7 @@ var questionsData = [];
 var qnaData = [];
 var answer = "";
 
-function askQuestion(per, action) {
+function askQuestion(per, action, conv) {
     var length = qnaData.length;
     var rand = Math.round(Math.random()*(length-1));
     console.log("indice random: " + rand);
@@ -14,19 +14,19 @@ function askQuestion(per, action) {
             dialogClass: "no-close",
             buttons: {
                 "1": function() {
-                    checkAnswer(1, rand, per, action);
+                    checkAnswer(1, rand, per, action, conv);
                     $(this).dialog("close");
                 },
                 "2": function() {
-                    checkAnswer(2, rand, per, action);
+                    checkAnswer(2, rand, per, action, conv);
                     $(this).dialog("close");
                 },
                 "3": function() {
-                    checkAnswer(3, rand, per, action);
+                    checkAnswer(3, rand, per, action, conv);
                     $(this).dialog("close");
                 },
                 "4": function() {
-                    checkAnswer(4, rand, per, action);
+                    checkAnswer(4, rand, per, action, conv);
                     $(this).dialog("close");
                 },
             },
@@ -41,15 +41,20 @@ function collectGo(per) {
 }
 
 // answer, index, person, question case
-function checkAnswer(ans, ind, per, action) {
+function checkAnswer(ans, ind, per, action, conv) {
     if (qnaData[ind].answer == ans) {
         alert("Correcto!");
         addAlert(per.name + " respondió correctamente. ");
-        action(per);
+        if (conv == 1 || conv ==2){
+        	action(per);
+        }
         updateMoney();
     }
     else {
         alert("Incorrecto!");
+        if (conv == 0 || conv == 2){
+        	action(per);
+        }
         addAlert(per.name + " respondió incorrectamente. ");
     }
 }
