@@ -3,6 +3,7 @@ var qnaData = [];
 var answer = "";
 var isCorrect = false;
 
+
 function prompQuestion(i, p) {
 	$( function() {
 		document.getElementById("qtext").textContent = qnaData[i].question;
@@ -39,6 +40,24 @@ function prompQuestion(i, p) {
 		});
 	});
 }
+/*function connection() {
+    var mysql = require('mysql');
+
+    var con = mysql.createConnection({
+        host: "localhost",
+        user: "root",
+        password: "",
+        database: "monopolio"
+    });
+
+    con.connect(function(err) {
+        if (err) throw err;
+        con.query("SELECT * FROM preguntas", function (err, result, fields) {
+            if (err) throw err;
+            console.log(result);
+        });
+    });
+}*/
 
 function getQuestions() {
 	$.ajax({
@@ -48,8 +67,7 @@ function getQuestions() {
 	    success: function (data) {
 	    	var questionsData = data.split("\n");
 	    	console.log(questionsData);
-
-	    	var arrayLength = questionsData.length;
+            var arrayLength = questionsData.length;
 			for (var i = 0; i < arrayLength; i++) {
 				var split = questionsData[i].split("/");
 				var qna = {question: "", answer: ""};
