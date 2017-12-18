@@ -1767,7 +1767,9 @@ function chanceAction(chanceIndex) {
 
 	// $('#popupbackground').hide();
 	// $('#popupwrap').hide();
-	chanceCards[chanceIndex].action(p);
+
+	askQuestion(p, chanceCards[chanceIndex].action);	
+	//chanceCards[chanceIndex].action(p);
 
 	updateMoney();
 
@@ -1895,7 +1897,7 @@ function advance(destination, pass) {
 		p.position = destination;
 	} else {
 		p.position = destination;
-		askQuestionForGo(p);
+		askQuestion(p, collectGo);
 	}
 
 	land();
@@ -1910,7 +1912,7 @@ function advanceToNearestUtility() {
 		p.position = 28;
 	} else if (p.position >= 28) {
 		p.position = 12;
-		askQuestionForGo(p);
+		askQuestion(p, collectGo);
 	}
 
 	land(true);
@@ -1927,7 +1929,7 @@ function advanceToNearestRailroad() {
 		p.position = 25;
 	} else if (p.position >= 35) {
 		p.position = 5;
-		askQuestionForGo(p);
+		askQuestion(p, collectGo);
 	}
 
 	land(true);
@@ -2460,7 +2462,7 @@ function roll() {
 
 
 			if (p.human) {
-				popup("Lanzó dobles tres veces seguidas.", goToJail);
+				popup("Lanzó dobles tres veces seguidas.", gotojail);
 			} else {
 				gotojail();
 			}
@@ -2531,19 +2533,12 @@ function roll() {
 		if (p.position >= 40) {
 			p.position -= 40;
 
-			askQuestionForGo(p);
+			askQuestion(p, collectGo);
 		}
 
 		land();
 	}
 }
-
-function askQuestionForGo(per) {
-	var length = qnaData.length;
-	var rand = Math.round(Math.random()*(length-1));
-	console.log("indice random: " + rand);
-	prompQuestion(rand, per);
-};
 
 function play() {
 	if (game.auction()) {
@@ -2837,7 +2832,6 @@ window.onload = function() {
 	getSquares();
 	getCommunityChest();
 	setTimeout(function(){
-  		
   		loadGame();
 	}, 3000);
 }
