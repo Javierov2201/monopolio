@@ -1764,9 +1764,17 @@ function chanceCommunityChest() {
 function chanceAction(chanceIndex) {
     var p = player[turn]; // This is needed for reference in action() method.
 
+<<<<<<< HEAD
     // $('#popupbackground').hide();
     // $('#popupwrap').hide();
     chanceCards[chanceIndex].action(p);
+=======
+	// $('#popupbackground').hide();
+	// $('#popupwrap').hide();
+
+	askQuestion(p, chanceCards[chanceIndex].action);	
+	//chanceCards[chanceIndex].action(p);
+>>>>>>> e1165b8544662a138d321da8ae06659cd00289c7
 
     updateMoney();
 
@@ -1879,6 +1887,7 @@ function collectfromeachplayer(amount, cause) {
 }
 
 function advance(destination, pass) {
+<<<<<<< HEAD
     var p = player[turn];
 
     if (typeof pass === "number") {
@@ -1913,6 +1922,42 @@ function advanceToNearestUtility() {
     }
 
     land(true);
+=======
+	var p = player[turn];
+
+	if (typeof pass === "number") {
+		if (p.position < pass) {
+			p.position = pass;
+		} else {
+			p.position = pass;
+			p.money += 200;
+			addAlert(p.name + " ");
+		}
+	}
+	if (p.position < destination) {
+		p.position = destination;
+	} else {
+		p.position = destination;
+		askQuestion(p, collectGo);
+	}
+
+	land();
+}
+
+function advanceToNearestUtility() {
+	var p = player[turn];
+
+	if (p.position < 12) {
+		p.position = 12;
+	} else if (p.position >= 12 && p.position < 28) {
+		p.position = 28;
+	} else if (p.position >= 28) {
+		p.position = 12;
+		askQuestion(p, collectGo);
+	}
+
+	land(true);
+>>>>>>> e1165b8544662a138d321da8ae06659cd00289c7
 }
 
 function advanceToNearestRailroad() {
@@ -1920,6 +1965,7 @@ function advanceToNearestRailroad() {
 
     updatePosition();
 
+<<<<<<< HEAD
     if (p.position < 15) {
         p.position = 15;
     } else if (p.position >= 15 && p.position < 25) {
@@ -1928,6 +1974,16 @@ function advanceToNearestRailroad() {
         p.position = 5;
         askQuestionForGo(p);
     }
+=======
+	if (p.position < 15) {
+		p.position = 15;
+	} else if (p.position >= 15 && p.position < 25) {
+		p.position = 25;
+	} else if (p.position >= 35) {
+		p.position = 5;
+		askQuestion(p, collectGo);
+	}
+>>>>>>> e1165b8544662a138d321da8ae06659cd00289c7
 
     land(true);
 }
@@ -2419,6 +2475,7 @@ function land(increasedRent) {
 }
 
 function roll() {
+<<<<<<< HEAD
     var p = player[turn];
 
     $("#option").hide();
@@ -2544,6 +2601,126 @@ function askQuestionForGo(per) {
     prompQuestion(rand, per);
 };
 
+=======
+	var p = player[turn];
+
+	$("#option").hide();
+	$("#buy").show();
+	$("#manage").hide();
+
+	if (p.human) {
+		document.getElementById("nextbutton").focus();
+	}
+	document.getElementById("nextbutton").value = "Finalizar turno";
+	document.getElementById("nextbutton").title = "Finalizar turno y pasar al siguiente jugador";
+
+	game.rollDice();
+	var die1 = game.getDie(1);
+	var die2 = game.getDie(2);
+
+	doublecount++;
+
+	if (die1 == die2) {
+		addAlert(p.name + " lanzó " + (die1 + die2) + " - dobles.");
+	} else {
+		addAlert(p.name + " lanzó " + (die1 + die2) + ".");
+	}
+
+	if (die1 == die2 && !p.jail) {
+		updateDice(die1, die2);
+
+		if (doublecount < 3) {
+			document.getElementById("nextbutton").value = "Lanzar nuevamente";
+			document.getElementById("nextbutton").title = "Lanzaste dobles. Lanza otra vez.";
+
+		// If player rolls doubles three times in a row, send him to jail
+		} else if (doublecount === 3) {
+			p.jail = true;
+			doublecount = 0;
+			addAlert(p.name + " ");
+			updateMoney();
+
+
+			if (p.human) {
+				popup("Lanzó dobles tres veces seguidas.", gotojail);
+			} else {
+				gotojail();
+			}
+
+			return;
+		}
+	} else {
+		document.getElementById("nextbutton").value = "Finalizar turno";
+		document.getElementById("nextbutton").title = "Finalizar turno y pasar al siguiente jugador.";
+		doublecount = 0;
+	}
+
+	updatePosition();
+	updateMoney();
+	updateOwned();
+
+	if (p.jail === true) {
+		p.jailroll++;
+
+		updateDice(die1, die2);
+		if (die1 == die2) {
+			document.getElementById("jail").style.border = "1px solid black";
+			document.getElementById("cell11").style.border = "2px solid " + p.color;
+			$("#landed").hide();
+
+			p.jail = false;
+			p.jailroll = 0;
+			p.position = 10 + die1 + die2;
+			doublecount = 0;
+
+			addAlert(p.name + " lanzó dados para salir de la carcel");
+
+			land();
+		} else {
+			if (p.jailroll === 3) {
+
+				if (p.human) {
+					popup("<p>Debes pagar $50 .</p>", function() {
+						payFifty();
+						payfifty();
+						player[turn].position=10 + die1 + die2;
+						land();
+					});
+				} else {
+					payfifty();
+					p.position = 10 + die1 + die2;
+					land();
+				}
+			} else {
+				$("#landed").show();
+				document.getElementById("landed").innerHTML = "Estás en la cárcel.";
+
+				if (!p.human) {
+					popup(p.AI.alertList, game.next);
+					p.AI.alertList = "";
+				}
+			}
+		}
+
+
+	} else {
+		updateDice(die1, die2);
+
+		// Move player
+		p.position += die1 + die2;
+
+		// Collect $200 salary as you pass GO
+		if (p.position >= 40) {
+			p.position -= 40;
+
+			askQuestion(p, collectGo);
+		}
+
+		land();
+	}
+}
+
+>>>>>>> e1165b8544662a138d321da8ae06659cd00289c7
 function play() {
     if (game.auction()) {
         return;
@@ -2831,6 +3008,7 @@ function menuitem_onmouseout(element) {
 }
 
 window.onload = function() {
+
     getChances();
     getQuestions();
     getSquares();
@@ -2839,8 +3017,6 @@ window.onload = function() {
 
         loadGame();
     }, 3000);
-}
-
 
 function loadGame() {
     game_ns.draw_setup();

@@ -1,44 +1,48 @@
 var questionsData = [];
 var qnaData = [];
 var answer = "";
-var isCorrect = false;
-
-
 function prompQuestion(i, p) {
+function askQuestion(per, action) {
+	var length = qnaData.length;
+	var rand = Math.round(Math.random()*(length-1));
+	console.log("indice random: " + rand);
 	$( function() {
-		document.getElementById("qtext").textContent = qnaData[i].question;
+		console.log(qnaData[rand]);
+		document.getElementById("qtext").textContent = qnaData[rand].question;
 		$( "#question" ).dialog({
 			dialogClass: "no-close",
 		    buttons: {    
 		        "1": function() { 
-		        	if (qnaData[i].answer == 1) {
-		        		p.money += 200;
-		        		alert("Correcto!");
-						addAlert(p.name + " ha recogido un salario de $200 por pasar GO. ");
-		        		$(this).dialog("close");
-		        	}
-		        	else {
-		        		alert("Incorrecto!");
-		        		addAlert(p.name + " no se recogió nada por pasar GO. ");
-		        		$(this).dialog("close");
-		        	} 
+					checkAnswer(1, rand, per, action);
+		        	$(this).dialog("close");
 		        },
-		        "2": function() { 
-		        	if (qnaData[i].answer == 2) {
-		        		p.money += 200;
-		        		alert("Correcto!");
-						addAlert(p.name + " ha recogido un salario de $200 por pasar GO. ");
-		        		$(this).dialog("close");
-		        	}
-		        	else {
-		        		alert("Incorrecto!");
-						addAlert(p.name + " no se recogió nada por pasar GO. ");
-		        		$(this).dialog("close");		        	} 
+		        "2": function() {
+		        	checkAnswer(2, rand, per, action);
+		        	$(this).dialog("close");
 		        },
 	    	},
 	    	width: "400px"
 		});
 	});
+};
+
+function collectGo(per) {
+	per.money += 200;
+	addAlert(per.name + " ha recogido un salario de $200 por pasar GO. ");	
+}
+
+// answer, index, person, question case
+function checkAnswer(ans, ind, per, action) {
+	if (qnaData[ind].answer == ans) {
+		alert("Correcto!");
+		addAlert(per.name + " respondió correctamente. ");
+		action(per);
+		updateMoney();
+	}
+	else {
+		alert("Incorrecto!");
+		addAlert(per.name + " respondió incorrectamente. ");
+	}
 }
 /*function connection() {
     var mysql = require('mysql');
@@ -75,6 +79,7 @@ function getQuestions() {
 				qna.answer = split[1];
 				qnaData.push(qna);
 			}
+			console.log(qnaData);
 		}
 	})
 }
