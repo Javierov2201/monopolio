@@ -1763,18 +1763,14 @@ function chanceCommunityChest() {
 
 function chanceAction(chanceIndex) {
     var p = player[turn]; // This is needed for reference in action() method.
-
-<<<<<<< HEAD
     // $('#popupbackground').hide();
     // $('#popupwrap').hide();
     chanceCards[chanceIndex].action(p);
-=======
 	// $('#popupbackground').hide();
 	// $('#popupwrap').hide();
 
 	askQuestion(p, chanceCards[chanceIndex].action);	
 	//chanceCards[chanceIndex].action(p);
->>>>>>> e1165b8544662a138d321da8ae06659cd00289c7
 
     updateMoney();
 
@@ -1887,7 +1883,6 @@ function collectfromeachplayer(amount, cause) {
 }
 
 function advance(destination, pass) {
-<<<<<<< HEAD
     var p = player[turn];
 
     if (typeof pass === "number") {
@@ -1922,7 +1917,6 @@ function advanceToNearestUtility() {
     }
 
     land(true);
-=======
 	var p = player[turn];
 
 	if (typeof pass === "number") {
@@ -1957,7 +1951,6 @@ function advanceToNearestUtility() {
 	}
 
 	land(true);
->>>>>>> e1165b8544662a138d321da8ae06659cd00289c7
 }
 
 function advanceToNearestRailroad() {
@@ -1965,7 +1958,6 @@ function advanceToNearestRailroad() {
 
     updatePosition();
 
-<<<<<<< HEAD
     if (p.position < 15) {
         p.position = 15;
     } else if (p.position >= 15 && p.position < 25) {
@@ -1974,7 +1966,7 @@ function advanceToNearestRailroad() {
         p.position = 5;
         askQuestionForGo(p);
     }
-=======
+
 	if (p.position < 15) {
 		p.position = 15;
 	} else if (p.position >= 15 && p.position < 25) {
@@ -1983,7 +1975,6 @@ function advanceToNearestRailroad() {
 		p.position = 5;
 		askQuestion(p, collectGo);
 	}
->>>>>>> e1165b8544662a138d321da8ae06659cd00289c7
 
     land(true);
 }
@@ -2475,7 +2466,6 @@ function land(increasedRent) {
 }
 
 function roll() {
-<<<<<<< HEAD
     var p = player[turn];
 
     $("#option").hide();
@@ -2601,7 +2591,6 @@ function askQuestionForGo(per) {
     prompQuestion(rand, per);
 };
 
-=======
 	var p = player[turn];
 
 	$("#option").hide();
@@ -2647,7 +2636,6 @@ function askQuestionForGo(per) {
 				gotojail();
 			}
 
-			return;
 		}
 	} else {
 		document.getElementById("nextbutton").value = "Finalizar turno";
@@ -2718,9 +2706,8 @@ function askQuestionForGo(per) {
 
 		land();
 	}
-}
 
->>>>>>> e1165b8544662a138d321da8ae06659cd00289c7
+
 function play() {
     if (game.auction()) {
         return;
@@ -3348,4 +3335,4 @@ function arr_diff(a1, a2) {
     }
 
     return diff;
-};
+}
