@@ -20,6 +20,14 @@ function askQuestion(per, action) {
 		        	checkAnswer(2, rand, per, action);
 		        	$(this).dialog("close");
 		        },
+		        "3": function() {
+		        	checkAnswer(3, rand, per, action);
+		        	$(this).dialog("close");
+		        },
+		        "4": function() {
+		        	checkAnswer(4, rand, per, action);
+		        	$(this).dialog("close");
+		        },
 	    	},
 	    	width: "400px"
 		});
