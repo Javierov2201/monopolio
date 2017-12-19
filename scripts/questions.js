@@ -46,14 +46,14 @@ function checkAnswer(ans, ind, per, action, conv) {
         alert("Correcto!");
         addAlert(per.name + " respondió correctamente. ");
         if (conv == 1 || conv ==2){
-        	action(per);
+            action(per);
         }
         updateMoney();
     }
     else {
         alert("Incorrecto!");
         if (conv == 0 || conv == 2){
-        	action(per);
+            action(per);
         }
         addAlert(per.name + " respondió incorrectamente. ");
     }

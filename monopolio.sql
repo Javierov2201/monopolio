@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-12-2017 a las 01:10:57
+-- Tiempo de generación: 19-12-2017 a las 03:48:58
 -- Versión del servidor: 10.1.28-MariaDB
 -- Versión de PHP: 7.1.10
 
@@ -110,9 +110,11 @@ CREATE TABLE `preguntas` (
 --
 
 INSERT INTO `preguntas` (`ID_pregunta`, `pregunta`, `alternativa1`, `alternativa2`, `alternativa3`, `alternativa4`, `respuesta`) VALUES
-(1, 'Â¿QuÃ© alternativa no qweqwees una forma de codificaciÃ³n del conocimiento?', 'rwwqeqwe ', 'werwqwe', 'rewqweqwe', 'werqweqwe', 'a2'),
-(3, '11111', '1 ', '1', '1', '1', 'a1'),
-(4, 'truytu', 'rwqe', 'ee', 'tyu', 'tyu', 'a2');
+(1, 'Â¿QuÃ© nivel sigue al Dato? ', 'InformaciÃ³n ', 'Conocimiento', 'SabidurÃ­a', 'AnÃ¡lisis', 'a1'),
+(2, 'Â¿QuÃ© proceso va de conocimiento tÃ¡cita a explÃ­cito?', 'SocializaciÃ³n', 'ExteriorizaciÃ³n', 'CombinaciÃ³n', 'InteriorizaciÃ³n', '2'),
+(3, 'Â¿El proceso de combicaciÃ³n va de conocimiento explÃ­cito a ...?', 'ExplÃ­cito', 'TÃ¡cito', 'Implicito', 'Expreso', '1'),
+(4, 'Â¿CuÃ¡l no es un proceso de gestiÃ³n del conocimiento?', 'CodificaciÃ³n', 'TransformaciÃ³n', 'UtilizaciÃ³n', 'DistribuciÃ³n', '2'),
+(5, 'Â¿QuÃ© alternativa no es una forma de codificaciÃ³n del conocimiento?', 'Feria de conocimiento', 'Videos', 'Documentos', 'Audios', '1');
 
 --
 -- Índices para tablas volcadas
@@ -144,7 +146,7 @@ ALTER TABLE `locaciones`
 -- AUTO_INCREMENT de la tabla `preguntas`
 --
 ALTER TABLE `preguntas`
-  MODIFY `ID_pregunta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID_pregunta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

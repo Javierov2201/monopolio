@@ -1768,15 +1768,15 @@ function chanceAction(chanceIndex) {
     // $('#popupbackground').hide();
     // $('#popupwrap').hide();
     if( chanceIndex==6 ||chanceIndex==12 || chanceIndex==0){
-    	askQuestion(p, chanceCards[chanceIndex].action, 1);
+        askQuestion(p, chanceCards[chanceIndex].action, 1);
     }
     if ( chanceIndex==1 &&chanceIndex==2  || chanceIndex==8  || chanceIndex==15 ||  chanceIndex==3){
-    	askQuestion(p, chanceCards[chanceIndex].action, 0);
+        askQuestion(p, chanceCards[chanceIndex].action, 0);
     }
     if ( chanceIndex==4 || chanceIndex==5 || chanceIndex==7 || chanceIndex==9  || chanceIndex==10  || chanceIndex==11 || chanceIndex==13 || chanceIndex==14){
-    	askQuestion(p, chanceCards[chanceIndex].action, 2);
+        askQuestion(p, chanceCards[chanceIndex].action, 2);
     }
-    
+
     //chanceCards[chanceIndex].action(p);
 
     updateMoney();

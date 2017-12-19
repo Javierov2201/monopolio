@@ -9,11 +9,11 @@ Chance
 Ing. Civil
 Ing. de Minas
 Visita la carcel
-Ing. de Petreoleo
+Ing. de Petroleo
 CTIC
 Ing. Petroquimica
 Ing. Textil
-Gimnasio Uni
+Gimnasio UNI
 Quimica Pura
 Arca comunal
 Fisica Pura
@@ -37,4 +37,4 @@ Estadio Uni
 Chance
 Ing. Sistemas
 Paga al ORCE
-Ciencies de la computacion
+Ciencias de la computacion
