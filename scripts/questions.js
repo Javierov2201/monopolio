@@ -38,6 +38,7 @@ function askQuestion(per, action, conv) {
 function collectGo(per) {
     per.money += 200;
     addAlert(per.name + " ha recogido un salario de $200 por pasar GO. ");
+    updateMoney();
 }
 
 // answer, index, person, question case
@@ -45,14 +46,13 @@ function checkAnswer(ans, ind, per, action, conv) {
     if (qnaData[ind].answer == ans) {
         alert("Correcto!");
         addAlert(per.name + " respondió correctamente. ");
-        if (conv == 1 || conv ==2){
+        if (conv == 1){
             action(per);
         }
-        updateMoney();
     }
     else {
         alert("Incorrecto!");
-        if (conv == 0 || conv == 2){
+        if (conv == 0){
             action(per);
         }
         addAlert(per.name + " respondió incorrectamente. ");

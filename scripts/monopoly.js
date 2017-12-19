@@ -1767,18 +1767,12 @@ function chanceAction(chanceIndex) {
 
     // $('#popupbackground').hide();
     // $('#popupwrap').hide();
-    if( chanceIndex==6 ||chanceIndex==12 || chanceIndex==0){
-        askQuestion(p, chanceCards[chanceIndex].action, 1);
-    }
-    if ( chanceIndex==1 &&chanceIndex==2  || chanceIndex==8  || chanceIndex==15 ||  chanceIndex==3){
+    if ( chanceIndex==1 || chanceIndex==2  || chanceIndex==8  || chanceIndex==15 ||  chanceIndex==3) {
         askQuestion(p, chanceCards[chanceIndex].action, 0);
     }
-    if ( chanceIndex==4 || chanceIndex==5 || chanceIndex==7 || chanceIndex==9  || chanceIndex==10  || chanceIndex==11 || chanceIndex==13 || chanceIndex==14){
-        askQuestion(p, chanceCards[chanceIndex].action, 2);
+    else {
+    	askQuestion(p, chanceCards[chanceIndex].action, 1);
     }
-
-    //chanceCards[chanceIndex].action(p);
-
     updateMoney();
 
     if (chanceIndex !== 15 && !p.human) {
@@ -1792,8 +1786,12 @@ function communityChestAction(communityChestIndex) {
 
     // $('#popupbackground').hide();
     // $('#popupwrap').hide();
-    communityChestCards[communityChestIndex].action(p);
-
+    if ( communityChestIndex==10 || communityChestIndex==11  || communityChestIndex==14  || communityChestIndex==15 ) {
+        askQuestion(p, communityChestCards[communityChestIndex].action, 0);
+    }
+    else {
+    	askQuestion(p, communityChestCards[communityChestIndex].action, 1);
+    }
     updateMoney();
 
     if (communityChestIndex !== 15 && !p.human) {
