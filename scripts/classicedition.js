@@ -41,7 +41,7 @@ function getSquares() {
     $.ajax({
         type: 'GET',
         cache: false,
-        url: 'http://localhost/monopolio/data/sitios.txt',
+        url: 'data/sitios.txt',
         success: function (data) {
             squareData = data.split("\n");
             square[0] = new Square(squareData[0], "COLLECT $200 SALARY AS YOU PASS.", "#FFFFFF");
@@ -93,7 +93,7 @@ function getCommunityChest() {
     $.ajax({
         type: 'GET',
         cache: false,
-        url: 'http://localhost/monopolio/data/arcacomunal.txt',
+        url: 'data/arcacomunal.txt',
         success: function (data) {
             communityChestData = data.split("\n");
             communityChestCards[0] = new Card(communityChestData[0], function(p) { p.communityChestJailCard = true; updateOwned();});
@@ -122,7 +122,7 @@ function getChances() {
     $.ajax({
         type: 'GET',
         cache: false,
-        url: 'http://localhost/monopolio/data/chances.txt',
+        url: 'data/chances.txt',
         success: function (data) {
             chanceData = data.split("\n");
             chanceCards[0] = new Card(chanceData[0], function(p) { p.chanceJailCard=true; updateOwned();});
@@ -152,8 +152,6 @@ function Card(text, action) {
 }
 
 function corrections() {
-    document.getElementById("cell1name").textContent = "Mediter-ranean Avenue";
-
     // Add images to enlarges.
     document.getElementById("enlarge5token").innerHTML += '<img src="images/train_icon.png" height="60" width="65" alt="" style="position: relative; bottom: 20px;" />';
     document.getElementById("enlarge15token").innerHTML += '<img src="images/train_icon.png" height="60" width="65" alt="" style="position: relative; top: -20px;" />';

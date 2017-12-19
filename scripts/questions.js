@@ -63,7 +63,7 @@ function getQuestions() {
     $.ajax({
         type: 'GET',
         cache: false,
-        url: 'http://localhost/monopolio/data/preguntas.txt',
+        url: 'data/preguntas.txt',
         success: function (data) {
             var questionsData = data.split("\n");
             console.log(questionsData);

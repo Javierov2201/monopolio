@@ -1,5 +1,6 @@
-¿Qué nivel sigue al Dato?  1.Información  2.Conocimiento 3.Sabiduría 4.Análisis / a1
+¿Qué nivel sigue al Dato?  1.Información       2.Conocimiento 3.Sabiduría 4.Análisis / a1
 ¿Qué proceso va de conocimiento tácita a explícito? 1.Socialización 2.Exteriorización 3.Combinación 4.Interiorización / 2
 ¿El proceso de combicación va de conocimiento explícito a ...? 1.Explícito 2.Tácito 3.Implicito 4.Expreso / 1
 ¿Cuál no es un proceso de gestión del conocimiento? 1.Codificación 2.Transformación 3.Utilización 4.Distribución / 2
 ¿Qué alternativa no es una forma de codificación del conocimiento? 1.Feria de conocimiento 2.Videos 3.Documentos 4.Audios / 1
+ 1. 2. 3. 4. / 1

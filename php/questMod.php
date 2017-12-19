@@ -15,13 +15,15 @@ $insertado = "UPDATE  `preguntas` SET `pregunta`='$pregunta', `alternativa1`='$a
  WHERE `id_pregunta`='$id'";
 $stmt = mysqli_query($con,$insertado);
 ?>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
 <html>
 <body style="background-color: lightgray">
 <br><br><br><br><br>
 
 <center><h2 style="color: black;">Pregunta correctamente modificada</center><br><br><br>
 <center><form action="searchQuest.php" method="POST"	>
-    <button class="btn-lg btn-danger" type="submit" value=""> Regresar </button>
+    <button class="btn btn-danger" type="submit" value=""> Regresar </button>
 </form></center>
 </body>
 </html>
