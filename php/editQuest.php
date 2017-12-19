@@ -25,13 +25,30 @@
         }
     </style>
     <?php
-    session_start();
-    include("conexion.php");
-    $con=conectar();
     $pregunta = $_POST['preguntaSeleccionada'];
-    $insertado = "Select * from preguntas where id_pregunta = $pregunta";
-    $stmt = mysqli_query($con,$insertado);
-    $extraido1=mysqli_fetch_array($stmt);
+    $preg = [];
+    $myfile = fopen("../data/preguntas.txt", "r") or die("Unable to open file!");
+    if ($myfile) {
+        $i=1;
+        while (($line = fgets($myfile)) !== false) {
+            $preg[$i] = $line;
+            $i++;
+        }
+    }
+    $quest = strstr($preg[$pregunta],'?',true).'?';
+    $pos1= strpos($preg[$pregunta],'1')+2;
+    $pos2= strpos($preg[$pregunta],'2')+2;
+    $pos3= strpos($preg[$pregunta],'3')+2;
+    $pos4= strpos($preg[$pregunta],'4')+2;
+    $pos5= strpos($preg[$pregunta],'/')+2;
+    $a1 = substr($preg[$pregunta],$pos1,$pos2-$pos1-3);
+    $a2 = substr($preg[$pregunta],$pos2,$pos3-$pos2-3);
+    $a3 = substr($preg[$pregunta],$pos3,$pos4-$pos3-3);
+    $a4 = substr($preg[$pregunta],$pos4,$pos5-$pos4-3);
+    $ac = substr($preg[$pregunta],$pos5,1);
+    fclose($myfile);
+
+
     ?>
 
 </head>
@@ -60,33 +77,33 @@
                 <col width="70%">
                  <tr>
                     <th>Pregunta</th>
-                    <th><input type="text" name="txtPregunta" class="form-control"style="width: 90%" value="<?php echo $extraido1['pregunta']?>" required ></th>
+                    <th><input type="text" name="txtPregunta" class="form-control"style="width: 90%" value="<?php echo $quest?>" required ></th>
                 </tr>
                 <tr>
                     <th>Alternativa 1</th>
-                    <th><input type="text" name="txtA1" class="form-control" style="width: 90%" value="<?php echo $extraido1['alternativa1']?>" required></th>
+                    <th><input type="text" name="txtA1" class="form-control" style="width: 90%" value="<?php echo $a1?>" required></th>
                 </tr>
                 <tr>
                     <th>Alternativa 2</th>
-                    <th><input type="text" name="txtA2" class="form-control" style="width: 90%" value="<?php echo $extraido1['alternativa2']?>" required></th>
+                    <th><input type="text" name="txtA2" class="form-control" style="width: 90%" value="<?php echo $a2?>" required></th>
                 </tr>
                 <tr>
                     <th>Alternativa 3</th>
-                    <th><input type="text" name="txtA3" class="form-control" style="width: 90%" value="<?php echo $extraido1['alternativa3']?>" required></th>
+                    <th><input type="text" name="txtA3" class="form-control" style="width: 90%" value="<?php echo $a3?>" required></th>
                 </tr>
                 <tr>
                     <th>Alternativa 4</th>
-                    <th><input type="text" name="txtA4" class="form-control" style="width: 90%" value="<?php echo $extraido1['alternativa4']?>" required></th>
+                    <th><input type="text" name="txtA4" class="form-control" style="width: 90%" value="<?php echo $a4?>" required></th>
                 </tr>
                 <tr>
                     <th>Respuesta correcta</th>
                     <th>
                         <center>
                             <select name="txtRespuesta" class="form-control" id="alternativas" style="width: 70%; align-items: center">
-                                <option value="a1">Alternativa 1</option>
-                                <option value="a2">Alternativa 2</option>
-                                <option value="a3">Alternativa 3</option>
-                                <option value="a4">Alternativa 4</option>
+                                <option value="1">Alternativa 1</option>
+                                <option value="2">Alternativa 2</option>
+                                <option value="3">Alternativa 3</option>
+                                <option value="4">Alternativa 4</option>
                             </select>
                         </center>
                     </th>

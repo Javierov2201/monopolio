@@ -28,15 +28,14 @@
         }
     </style>
     <?php
-        include('../php/Conexion.php');
-        $con=conectar();
-        $query="select nombre from locaciones";
-        $stmt=mysqli_query($con,$query);
         $locaciones[]="";
+        $myfile = fopen("../data/sitios.txt", "r") or die("Unable to open file!");
         $i=1;
-        while($extract=mysqli_fetch_array($stmt)){
-            $locaciones[$i]=$extract[0];
-            $i+=1;
+        if ($myfile) {
+             while (($line = fgets($myfile)) !== false) {
+                $locaciones[$i] = $line;
+                $i++;
+            }
         }
     ?>
 </head>

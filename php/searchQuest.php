@@ -25,17 +25,17 @@
         }
     </style>
     <?php
-    session_start();
-    include("conexion.php");
-    $con=conectar();
-
-    $Mysql="Call ComboPreguntas";
-    $result3=mysqli_query($con,$Mysql);
 
     $comboPreguntas="";
-    while($res2 = mysqli_fetch_array($result3)){
-        $comboPreguntas.='<option value="'.$res2[0].'">'.$res2[1].'</option>';
+    $myfile = fopen("../data/preguntas.txt", "r") or die("Unable to open file!");
+    if ($myfile) {
+        $i=1;
+        while (($line = fgets($myfile)) !== false) {
+            $comboPreguntas.='<option value="'.$i.'">'.strstr($line,'?',true).'?</option>';
+            $i++;
+        }
     }
+    fclose($myfile);
     ?>
 </head>
 
